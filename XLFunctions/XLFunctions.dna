@@ -1,0 +1,3 @@
+<DnaLibrary Name="JH add-ins" RuntimeVersion="v4.0">
+	<ExternalLibrary Path="XLFunctions.dll" />
+</DnaLibrary>
