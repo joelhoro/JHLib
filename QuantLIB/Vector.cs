@@ -12,7 +12,7 @@ namespace JHLib.QuantLIB
         public static double StdDev(this DenseVector vector)
         {
             double average = vector.Average();
-            return Math.Sqrt(vector * vector / vector.Count - average);
+            return Math.Sqrt(vector * vector / vector.Count - average*average);
         }
     }
 }
