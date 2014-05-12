@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MathNet.Numerics.LinearAlgebra.Double;
 
 namespace Tests
 {
@@ -12,17 +13,11 @@ namespace Tests
     {
         const double TOLERANCE = 1e-6;
 
-        /// <summary>
-        /// Check that the MonteCarlo price of a call matches the analytical value
-        /// </summary>
-        [TestMethod]
-        public void TestEquityModel()
+        private EquityModel GetModel() 
         {
             const string ticker = "MSFT";
-            const string NEWLINE = "\n";
             const int N = 10000000;
             var equity = Equity.Lookup(ticker);
-            double K = equity.spot;
 
             Context.Initialize();
             var today = Context.TODAY;
@@ -34,10 +29,23 @@ namespace Tests
             var model = new EquityModel { equity = equity, diffusiondates = dates, N = N };
             var normal = new Normal();
 
-            var t = DateTime.Now;
-
             model.ComputePaths(normal);
+            return model;
+        }
 
+        /// <summary>
+        /// Check that the MonteCarlo price of a call matches the analytical value
+        /// </summary>
+        [TestMethod]
+        public void TestEquityModel()
+        {
+            const string NEWLINE = "\n";
+            var model = GetModel();
+            var equity = model.equity;
+            var dates = model.diffusiondates;
+            var today = Context.TODAY;
+
+            double K = equity.spot;
             foreach( var evaluationDate in dates )
             {
                 var values = model.PathsOnDate(evaluationDate);
@@ -57,10 +65,47 @@ namespace Tests
 
                 string output = "Date: " + evaluationDate.ToString() + NEWLINE;
                 output += String.Format("{0} +- {1}", MCPrice, stdev) + NEWLINE;
-                output += "Time = " + (DateTime.Now - t).TotalSeconds + NEWLINE;
                 output += String.Format("BS price: {0}", BSPrice) + NEWLINE;
                 Console.WriteLine(output);
             }
         }
+
+        /// <summary>
+        /// Check that the MonteCarlo price of a forward starting call matches the analytical value
+        /// </summary>
+        [TestMethod]
+        public void TestEquityModelForward()
+        {
+            const string NEWLINE = "\n";
+            var model = GetModel();
+            var equity = model.equity;
+            var dates = model.diffusiondates;
+            var today = Context.TODAY;
+
+            double K = 1;
+
+            var values = model.PathsOnDate(dates[1]).PointwiseDivide(
+                         model.PathsOnDate(dates[0])
+                            ) as DenseVector;
+
+            // apply call option payoff
+            for (int i = 0; i < values.Count; i++)
+                values[i] = Math.Max(values[i] - K, 0);
+
+            var MCPrice = values.Average();
+            var stdev = values.StdDev() / Math.Sqrt(model.N);
+
+            double maturity = (dates[1]-dates[0]).Days / 365;
+            var BSPrice = BlackScholes.Price(OptionType.Call, 1, K, maturity, 0, equity.sigma);
+
+            double tolerance = Math.Min(stdev, 1e-2);
+            Assert.AreEqual(BSPrice, MCPrice, tolerance);
+
+            string output = "Date: " + dates[1].ToString() + NEWLINE;
+            output += String.Format("{0} +- {1}", MCPrice, stdev) + NEWLINE;
+            output += String.Format("BS price: {0}", BSPrice) + NEWLINE;
+            Console.WriteLine(output);
+        }
+
     }
 }
