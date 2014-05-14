@@ -7,10 +7,10 @@ import System
 sys.path.append(r"c:\Users\joel\Documents\Python\graph")
 from gexapricer import Cliquet, today
 
-path = r"c:\Users\joel\Documents\Visual Studio 2013\Projects\QL\bin\debug" + "\\"
+path = r"c:\Users\joel\Documents\Visual Studio 2013\Projects\JHLib\QuantLib\bin\debug" + "\\"
 clr.AddReferenceToFileAndPath(path + "QL.dll")
 
-from QL import *
+from JHLib.QuantLIB import *
 
 
 class GexaModel():
