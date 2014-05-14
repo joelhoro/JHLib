@@ -60,7 +60,7 @@ namespace Tests
                 double maturity = (evaluationDate-today).Days / 365;
                 var BSPrice = BlackScholes.Price(OptionType.Call, equity.spot, K, maturity, 0, equity.sigma);
 
-                double tolerance = Math.Min(stdev, 1e-2);
+                double tolerance = Math.Min(2*stdev, 1e-2);
                 Assert.AreEqual(BSPrice,MCPrice, tolerance);
 
                 string output = "Date: " + evaluationDate.ToString() + NEWLINE;
