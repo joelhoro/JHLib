@@ -1,3 +1,29 @@
 <DnaLibrary Name="JH add-ins" RuntimeVersion="v4.0">
 	<ExternalLibrary Path="XLFunctions.dll" />
+
+   <CustomUI>
+    <customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui">
+      <ribbon>
+        <tabs>
+          <tab id="customTab" label="JHLIB ADDINS" insertAfterMso="TabAdd-ins">
+            <group id="Refresh" label="First menu">
+              <button id="RefreshCmd" size="large" label="Reload Data" imageMso="AccessFormWizard" onAction="RefreshCmd" />
+              <button id="RefreshCmd2" label="Reload Data" imageMso="TableSharePointListsModifyColumnsAndSettings" onAction="RefreshCmd" />
+              <button id="RefreshCmd3" label="Reload Data" imageMso="ChartAreaChart" onAction="RefreshCmd" />
+            </group>
+            <group id="Refresh2" label="Some other menu">
+              <button id="RefreshCmd4" label="Reload Data" imageMso="AccessFormWizard" onAction="RefreshCmd" />
+                <menu id="menu1" label="Menu example">
+               <button id="menuButton1" imageMso="ChartAreaChart"  label="First menu item" onAction="MenuChoice" />
+               <button id="menuButton2" imageMso="ChartAreaChart" label="Second menu item" onAction="MenuChoice"/>
+              </menu>  
+          
+            </group>
+          </tab>
+        </tabs>
+      </ribbon>
+    </customUI>
+  </CustomUI>
+
+  
 </DnaLibrary>

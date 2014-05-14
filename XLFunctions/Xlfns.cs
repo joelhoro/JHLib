@@ -1,11 +1,33 @@
 using ExcelDna.Integration;
+using ExcelDna.Integration.CustomUI;
 using JHLib.PythonWrapper;
 using Microsoft.Scripting.Hosting;
 using System;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace JHLib.XLFunctions
 {
-    public class Addins: IExcelAddIn
+    [ComVisible(true)]
+    public class MyRibbon : ExcelRibbon
+    {
+
+        public void RefreshCmd(IRibbonControl control)
+        {
+            //Years.Instance.Year(2012).Set_Trial_Balance_Data();
+            //Excel.Application xlApp = (Excel.Application)ExcelDnaUtil.Application;
+            MessageBox.Show("Refresh Done!");
+
+        }
+
+        public void MenuChoice(IRibbonControl control)
+        {
+            MessageBox.Show("Menu!");
+        }
+    }
+
+    [ComVisible(true)]
+    public class Addins : IExcelAddIn
     {
         const string FNS_HANDLES = "Custom functions (handles)";
         const string FNS_PYTHON = "Custom functions (Python)";
@@ -16,13 +38,43 @@ namespace JHLib.XLFunctions
         public void AutoOpen()
         {
             form = new ExcelDNALogForm(); 
-            form.Show();
+            //form.Show();
             form.Print("Loaded add-in");
+
+            XlCall.Excel(XlCall.xlfAddMenu,
+          1.0 /* Worksheet and macro sheet menu bar*/,
+          new object[,] { 
+                        { "Testing", "RingBell", null, null, null},
+                        { "MyAddInMenu", null, null, null, null},
+                            { "&Ring the bell", "RingBell", 
+                              null /* Shortcut key (Mac Only)*/, 
+                              null /* Description */, 
+                              null /* HelpTopic */},
+                            { "&Ring the bell too", "RingBell", 
+                              null /* Shortcut key (Mac Only)*/, 
+                              null /* Description */, 
+                              null /* HelpTopic */} },
+          "Help" /* Position 1 - Added menu is placed to left of this
+menu */ );
+
+        }
+
+        private void command()
+        {
+
         }
 
         public void AutoClose() 
         { 
-            form.Close();  
+            form.Close();
+            XlCall.Excel(XlCall.xlfDeleteMenu,
+            1.0 /* Worksheet and macro sheet menu bar*/,
+            "Testing");
+        }
+
+        public static void RingBell()
+        {
+            System.Console.Beep();
         }
 
         public static void Log(string output)
@@ -96,6 +148,11 @@ namespace JHLib.XLFunctions
             return fn[0,0](value);
         }
 
+        public static double Rename(string from, string to)
+        {
+            Handles.Rename(Handles.GetHandleName(from), to);
+            return 0;
+        }
 
         public static double[,] MCPrice(string payoffhandle,double maturity, double N)
         {
@@ -118,7 +175,16 @@ namespace JHLib.XLFunctions
 
         #endregion
 
+//           Dim myCommand() As Object = New Object() {"My Menu Item", 
+//"MyExposedFunction"} 
 
+
+
+//Registered function... 
+
+//    Public Shared Sub MyExposedFunction() 
+//        MsgBox("Hello World") 
+//    End Sub 
 
     }
 }
