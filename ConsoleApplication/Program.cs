@@ -8,6 +8,9 @@ namespace ConsoleApplication
 {
     using JHLib.QuantLIB;
     using MathNet.Numerics.Distributions;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Web.Script.Serialization;
 
 
     class Program
@@ -22,7 +25,7 @@ namespace ConsoleApplication
             handlestore["test4"] = 4543.123;
 
             HandleViewer handleviewer = new HandleViewer(handlestore);
-
+            
 
             Application.Run(handleviewer);
         }
@@ -44,6 +47,10 @@ namespace ConsoleApplication
             var output = "";
             const string NEWLINE = "\n";
 
+            //DumpToFile(model);
+            DumpToFile(new Date(DateTime.Now));
+            
+
             var t = DateTime.Now;
             int seeds = 10;
             //Debugger.Launch();
@@ -64,6 +71,17 @@ namespace ConsoleApplication
 
         }
 
+        private static void DumpToFile(object obj)
+        {
+            string filename = @"c:\temp\test.txt";
+            var file = new StreamWriter(filename);
+            //ObjectDumper.Dumper.Dump(model, "Model", file);
+            var json = new JavaScriptSerializer().Serialize(obj);
+            file.Write(json);
+            file.Close();
+            Process.Start(filename);
+        }
+
         public static void BlackScholesTest(int N)
         {
             double x = 0;
@@ -78,11 +96,30 @@ namespace ConsoleApplication
 
         public static void Main()
         {
-            DateTime t = DateTime.Now;
-            const int N = 1000000;
-            BlackScholesTest(N);
-            var output = String.Format("{0} micros", (DateTime.Now - t).TotalMilliseconds / N * 1000);
-            MessageBox.Show(output);
+            Console.WriteLine(DateTime.Now);
+            Console.WriteLine("============================");
+            LinqExamples.TestRange();
+            Console.WriteLine("============================");
+        }
+    }
+
+    class A
+    {
+        const double PI = 3.141592;
+
+        double CalculatePaintNeeded(double paintPerUnit, double radius)
+        {
+            // Select any of the following:
+            // 1. The entire next line of code.
+            // 2. The right-hand side of the next line of code.
+            // 3. Just "PI *" of the right-hand side of the next line
+            //    of code (to see the prompt for selection expansion).
+            // 4.  All code within the method body.
+            // ...Then invoke Extract Method.
+
+            double area = PI * radius * radius;
+
+            return area / paintPerUnit;
         }
     }
 }
