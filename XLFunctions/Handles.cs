@@ -15,11 +15,30 @@ namespace JHLib.XLFunctions
         const string HANDLE_MASK = "H[{0}#{1}]";
         const string HANDLE_REGEX = @"H\[{0}#{1}\]";
 
+        public static void Rename(string from, string to)
+        {
+            Store[to] = Store[from];
+            Store.Remove(from);
+        }
+
         public static string Create(object obj, string tag)
         {
             string handlename = String.Format(HANDLE_MASK, tag, counter++ );
             Store[tag] = obj;
             return handlename;
+        }
+
+        public static string GetHandleName(string handlename)
+        {
+            string pattern = String.Format(HANDLE_REGEX, @"(.*)", @".*");
+            Regex regex = new Regex(pattern);
+            Match match = regex.Match(handlename);
+
+            string name = null;
+            if (match.Success)
+                name = match.Groups[1].ToString();
+
+            return name;
         }
 
         public static object Get(string handlename)
