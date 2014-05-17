@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MathNet.Numerics.LinearAlgebra.Double;
 
-namespace JHLib.QuantLIB
+namespace JHLib.QuantLIB.Core
 {
     public static class VectorExtensions
     {

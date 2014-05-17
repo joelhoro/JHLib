@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace JHLib.QuantLIB
+namespace JHLib.QuantLIB.Core
 {
     public class Frequency
     {

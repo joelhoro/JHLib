@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace JHLib.QuantLIB
+namespace JHLib.QuantLIB.Model
 {
     public class SecurityStore
     {

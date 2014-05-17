@@ -1,10 +1,11 @@
-﻿using MathNet.Numerics.Distributions;
+﻿using JHLib.QuantLIB.Core;
+using MathNet.Numerics.Distributions;
 using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace JHLib.QuantLIB
+namespace JHLib.QuantLIB.Model
 {
     public static class Context
     {
