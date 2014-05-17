@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using JHLib.QuantLIB;
+using JHLib.QuantLIB.Core;
+using JHLib.QuantLIB.Model;
 
 namespace Tests
 {
@@ -8,7 +10,7 @@ namespace Tests
     public class QuantLIBTests
     {
         [TestMethod]
-        public void TestIncreasingVariance()
+        public void IncreasingVariance()
         {
             var equity = new Equity { spot = 100, sigma = 0.2 };
             Context.Initialize();

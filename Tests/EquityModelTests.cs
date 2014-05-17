@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using MathNet.Numerics.LinearAlgebra.Double;
+using JHLib.QuantLIB.Core;
+using JHLib.QuantLIB.Model;
 
 namespace Tests
 {
@@ -37,7 +39,7 @@ namespace Tests
         /// Check that the MonteCarlo price of a call matches the analytical value
         /// </summary>
         [TestMethod]
-        public void TestEquityModel()
+        public void EquityModel()
         {
             const string NEWLINE = "\n";
             var model = GetModel();
@@ -74,7 +76,7 @@ namespace Tests
         /// Check that the MonteCarlo price of a forward starting call matches the analytical value
         /// </summary>
         [TestMethod]
-        public void TestEquityModelForward()
+        public void EquityModelForward()
         {
             const string NEWLINE = "\n";
             var model = GetModel();

@@ -7,6 +7,9 @@ using System.Windows.Forms;
 namespace ConsoleApplication
 {
     using JHLib.QuantLIB;
+    using JHLib.QuantLIB.Core;
+    using JHLib.QuantLIB.Graph;
+    using JHLib.QuantLIB.Model;
     using MathNet.Numerics.Distributions;
     using System.Diagnostics;
     using System.IO;
@@ -94,32 +97,31 @@ namespace ConsoleApplication
             Console.WriteLine(p);
         }
 
+        public void TestCPP()
+        {
+
+        }
+
+
         public static void Main()
         {
             Console.WriteLine(DateTime.Now);
             Console.WriteLine("============================");
-            LinqExamples.TestRange();
+
+            var a = new GraphNodelet<double>(1);
+            var b = new GraphNodelet<double>(2);
+            var c = new GraphNodelet<double>(() => a.V + b.V);
+            var d = new GraphNodelet<double>(() => b.V + c.V);
+            var e = new GraphNodelet<double>(() => b.V + d.V);
+            
+            var x = c.V;
+            var y = e.V;
+            c.DebugMode = true;
+            c.Invalidate();
+            x = e.V;
+
             Console.WriteLine("============================");
         }
     }
 
-    class A
-    {
-        const double PI = 3.141592;
-
-        double CalculatePaintNeeded(double paintPerUnit, double radius)
-        {
-            // Select any of the following:
-            // 1. The entire next line of code.
-            // 2. The right-hand side of the next line of code.
-            // 3. Just "PI *" of the right-hand side of the next line
-            //    of code (to see the prompt for selection expansion).
-            // 4.  All code within the method body.
-            // ...Then invoke Extract Method.
-
-            double area = PI * radius * radius;
-
-            return area / paintPerUnit;
-        }
-    }
 }

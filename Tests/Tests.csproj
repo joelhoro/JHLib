@@ -66,7 +66,7 @@
   <ItemGroup>
     <ProjectReference Include="..\QuantLIB\QuantLIB.csproj">
       <Project>{99bd127d-bcf8-4919-872d-c290f4c2cb2f}</Project>
-      <Name>QL</Name>
+      <Name>QuantLIB</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

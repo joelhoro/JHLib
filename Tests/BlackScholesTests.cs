@@ -14,7 +14,7 @@ namespace Tests
         const double TOLERANCE = 1e-6;
 
         [TestMethod]
-        public void TestBlackScholes()
+        public void BlackScholesPrice()
         {
             double S = 105;
             double K = 100;
@@ -29,7 +29,7 @@ namespace Tests
         }
 
         [TestMethod]
-        public void TestBlackSholesImpliedVol()
+        public void BlackSholesImpliedVol()
         {
             double S = 105;
             double K = 100;
@@ -49,7 +49,7 @@ namespace Tests
         }
 
         [TestMethod]
-        public void TestBlackScholesSpeed()
+        public void BlackScholesSpeed()
         {
             DateTime t = DateTime.Now;
             double N = 100000;
