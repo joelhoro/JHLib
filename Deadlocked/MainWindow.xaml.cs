@@ -21,31 +21,33 @@ namespace Deadlocked
     public partial class MainWindow : Window
     {
         private Game game;
+        private GameCanvas gamecanvas;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            KeyDown += new KeyEventHandler(OnButtonKeyPress);
+            KeyDown += new KeyEventHandler(OnKeyDown);
 
             game = new Game();
-            game.GameActionEvent += new EventHandler<Classes.GameActionEventArgs>(DrawCanvas);
+            gamecanvas = new GameCanvas(canvas);
             game.GameStartEvent += new EventHandler(DrawLevel);
             game.Start();
+            game.level.LevelChanged += new EventHandler(DrawLevel);
         }
 
         private void DrawLevel(object sender, EventArgs e)
         {
             Game game = (Game)sender;
-            canvas.Draw(game.level);
+            gamecanvas.Draw(game.level);
         }
 
         private void DrawCanvas(object sender, Classes.GameActionEventArgs e)
         {
-            canvas.Draw(e.level);
+            gamecanvas.Draw(e.level);
         }
 
-        private void OnButtonKeyPress(object sender, KeyEventArgs e)
+        private void OnKeyDown(object sender, KeyEventArgs e)
         {
             var keys = new Dictionary<Key,Action> {
                 { Key.Down, Action.DOWN },
@@ -56,7 +58,7 @@ namespace Deadlocked
 
             if ( keys.ContainsKey(e.Key) )
             {
-                game.Send(keys[e.Key]);            
+                game.SendAction(keys[e.Key]);            
             }
         }
 

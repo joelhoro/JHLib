@@ -74,33 +74,38 @@ namespace Deadlocked
     {
         public int Width, Height;
         public List<Actor> actors = new List<Actor>();
+        public event EventHandler LevelChanged;
+
         public Level(int Width, int Height )
         {
             this.Width = Width;
             this.Height = Height;
         }
 
-        public void Send(Action action)
+        internal void ActionHandler(object sender, GameActionEventArgs e)
         {
             foreach(var actor in actors)
             {
-                actor.Evolve(this,action);
+                actor.Evolve(this,e.action);
             }
+            LevelChanged(sender, e as EventArgs);
         }
     }
 
-    public static class Renderer
+    public class GameCanvas
     {
         const int WIDTH_PIXELS = 50;
         const int HEIGHT_PIXELS = 50;
         const double CIRCLE_PERCENTAGE = 0.9;
+        private Canvas canvas;
+        public GameCanvas(Canvas canvas) { this.canvas = canvas; }
 
-        public static void Draw(this Canvas canvas, Level level)
+        public void Draw(Level level)
         {
             canvas.Children.Clear();
-            canvas.DrawBorder(level);
+            DrawBorder(level);
             foreach (var actor in level.actors)
-                canvas.Draw(level, actor);
+                Draw(level, actor);
         }
 
         public static SolidColorBrush ActorColor(Actor actor)
@@ -117,7 +122,7 @@ namespace Deadlocked
             return colorBrush;
         }
 
-        public static void Draw(this Canvas canvas, Level level, Actor actor)
+        public void Draw(Level level, Actor actor)
         {
             var actorshape = new Ellipse();
             actorshape.Height = HEIGHT_PIXELS * CIRCLE_PERCENTAGE;
@@ -127,12 +132,11 @@ namespace Deadlocked
 
             Canvas.SetTop(actorshape, HEIGHT_PIXELS * (0.5 * (1-CIRCLE_PERCENTAGE) + (level.Height -1- actor.y)));
             Canvas.SetLeft(actorshape, WIDTH_PIXELS * (0.5 * (1 - CIRCLE_PERCENTAGE) + actor.x));
-         
-            canvas.Children.Add(actorshape);
 
+            canvas.Children.Add(actorshape);
         }
 
-        public static void DrawBorder(this Canvas canvas, Level level)
+        public void DrawBorder(Level level)
         {
             var border = new Rectangle();
             border.Width = WIDTH_PIXELS * level.Width;
@@ -161,12 +165,13 @@ namespace Deadlocked
                 level.actors.Add(new Actor(actors[i,0],actors[i,1]));
             
             level.actors.Add(new Arrow(1, 0, Action.UP));
+            GameActionEvent += level.ActionHandler;
+
             if (GameStartEvent != null) GameStartEvent(this, EventArgs.Empty);
         }
 
-        internal void Send(Action action)
+        internal void SendAction(Action action)
         {
-            level.Send(action);
             var args = new GameActionEventArgs(action, level);
             GameActionEvent(this, args);
         }
