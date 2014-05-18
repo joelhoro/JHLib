@@ -28,8 +28,21 @@ namespace Deadlocked
 
             KeyDown += new KeyEventHandler(OnButtonKeyPress);
 
-            game = new Game(canvas);
+            game = new Game();
+            game.GameActionEvent += new EventHandler<Classes.GameActionEventArgs>(DrawCanvas);
+            game.GameStartEvent += new EventHandler(DrawLevel);
             game.Start();
+        }
+
+        private void DrawLevel(object sender, EventArgs e)
+        {
+            Game game = (Game)sender;
+            canvas.Draw(game.level);
+        }
+
+        private void DrawCanvas(object sender, Classes.GameActionEventArgs e)
+        {
+            canvas.Draw(e.level);
         }
 
         private void OnButtonKeyPress(object sender, KeyEventArgs e)

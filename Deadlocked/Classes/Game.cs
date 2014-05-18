@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using Deadlocked.Classes;
 
 namespace Deadlocked
 {
@@ -145,13 +146,9 @@ namespace Deadlocked
 
     public class Game
     {
-        private Canvas canvas;
-        private Level level;
-
-        public Game(Canvas canvas)
-        {
-            this.canvas = canvas;
-        }
+        public Level level;
+        public event EventHandler<GameActionEventArgs> GameActionEvent;
+        public event EventHandler GameStartEvent;
 
         public void Start()
         {
@@ -164,14 +161,14 @@ namespace Deadlocked
                 level.actors.Add(new Actor(actors[i,0],actors[i,1]));
             
             level.actors.Add(new Arrow(1, 0, Action.UP));
-
-            canvas.Draw(level);
+            if (GameStartEvent != null) GameStartEvent(this, EventArgs.Empty);
         }
 
         internal void Send(Action action)
         {
             level.Send(action);
-            canvas.Draw(level);
+            var args = new GameActionEventArgs(action, level);
+            GameActionEvent(this, args);
         }
     }
 }
