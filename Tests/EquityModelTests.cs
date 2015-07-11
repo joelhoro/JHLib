@@ -28,7 +28,7 @@ namespace Tests
             var endDate = midDate + year;
 
             var dates = new List<Date> { midDate, endDate };
-            var model = new EquityModel { equity = equity, diffusiondates = dates, N = N };
+            var model = new EquityModel( equity, dates, N );
             var normal = new Normal();
 
             model.ComputePaths(normal);

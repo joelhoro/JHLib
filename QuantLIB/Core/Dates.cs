@@ -13,7 +13,9 @@ namespace JHLib.QuantLIB.Core
     public class Date
     {
         private DateTime _datetime;
-        public Date(DateTime dateTime) { _datetime = dateTime;  }
+        public Date(DateTime dateTime) { _datetime = dateTime.Date;  }
+
+        public static Date Today { get { return new Date(DateTime.Now); } }
 
         public static IEnumerable<Date> GenerateSchedule(Date startDate, Frequency frequency, int numberOfDates )
         {
@@ -44,7 +46,7 @@ namespace JHLib.QuantLIB.Core
             return date1._datetime > date2._datetime;
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return _datetime.ToShortDateString();
         }

@@ -7,8 +7,8 @@ namespace JHLib.QuantLIB.Model
     {
         private static Dictionary<string, object> _store = new Dictionary<string,object> {
 
-            { "MSFT",       new Equity { spot = 100, sigma = 0.35 }         },
-            { "GE",         new Equity { spot = 58, sigma = 0.2 }           },
+            { "MSFT",       new Equity(100,0.35)         },
+            { "GE",         new Equity(58,0.2)           },
 
         };
 

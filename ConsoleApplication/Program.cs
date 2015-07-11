@@ -1,4 +1,4 @@
-﻿using JHLib.XLFunctions;
+﻿//using JHLib.XLFunctions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +10,7 @@ namespace ConsoleApplication
     using JHLib.QuantLIB.Core;
     using JHLib.QuantLIB.Graph;
     using JHLib.QuantLIB.Model;
+    using JHLib.QuantLIB.Pricers;
     using MathNet.Numerics.Distributions;
     using System.Diagnostics;
     using System.IO;
@@ -27,10 +28,10 @@ namespace ConsoleApplication
             handlestore["test3"] = new double[3];
             handlestore["test4"] = 4543.123;
 
-            HandleViewer handleviewer = new HandleViewer(handlestore);
+            //HandleViewer handleviewer = new HandleViewer(handlestore);
             
 
-            Application.Run(handleviewer);
+            //Application.Run(handleviewer);
         }
 
         static void EquityModel()
@@ -42,10 +43,14 @@ namespace ConsoleApplication
             Context.Initialize();
             date = Context.TODAY;
 
+            Func<double, double> payoff = x => Math.Max(x - 100, 0)+Math.Max(100-x,0);
+            var mcPricer = new MCPricer { equity = equity, maturity = date + new Frequency(360), Payoff = payoff };
+            var p = mcPricer.Price();
+            return;
             var frequency = new Frequency(180);
             List<Date> dates = Date.GenerateSchedule(date, frequency, 10).ToList();
 
-            var model = new EquityModel { equity = equity, diffusiondates = dates, N = 1000000 };
+            var model = new EquityModel(equity, dates, 1000000);
             var normal = new Normal();
             var output = "";
             const string NEWLINE = "\n";
@@ -107,6 +112,10 @@ namespace ConsoleApplication
         {
             Console.WriteLine(DateTime.Now);
             Console.WriteLine("============================");
+
+            EquityModel();
+            return;
+
 
             var a = new GraphNodelet<double>(1);
             var b = new GraphNodelet<double>(2);

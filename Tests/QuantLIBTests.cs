@@ -12,7 +12,7 @@ namespace Tests
         [TestMethod]
         public void IncreasingVariance()
         {
-            var equity = new Equity { spot = 100, sigma = 0.2 };
+            var equity = new Equity(100, 0.2);
             Context.Initialize();
             Date today = Context.TODAY;
 

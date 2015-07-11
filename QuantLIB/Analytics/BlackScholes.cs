@@ -27,12 +27,12 @@ namespace JHLib.QuantLIB
                     else if (optionType == OptionType.Put)
                         return DF * ( K * N(-d2) - Fwd * N(-d1) );
                     break;
+                case PriceType.Δ:
+                    return DF * Fwd * N(d1);
                 case PriceType.Vega:
                     return DF * Fwd * Math.Sqrt(T) * Nprime(d1);
-                    break;
                 case PriceType.Γ:
                     return 1 / ( DF * Fwd * std ) * Nprime(d1);
-                    break;
             }
 
             throw new Exception();

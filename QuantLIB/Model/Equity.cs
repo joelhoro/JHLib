@@ -21,6 +21,11 @@ namespace JHLib.QuantLIB.Model
         public double spot;
         public double sigma;
 
+        public Equity(double spot,double sigma)
+        {
+            this.spot = spot;
+            this.sigma = sigma;
+        }
         public double Variance(Date maturity)
         {
             return sigma * sigma * ( maturity -Context.TODAY).TotalDays/365;
@@ -43,6 +48,13 @@ namespace JHLib.QuantLIB.Model
         public Equity equity;
         public List<Date> diffusiondates;
         public int N;
+
+        public EquityModel(Equity equity,IEnumerable<Date> diffusiondates, int N)
+        {
+            this.equity = equity;
+            this.diffusiondates = diffusiondates.ToList();
+            this.N = N;
+        }
 
         private List<DenseVector> pathsCache;
 
@@ -76,7 +88,7 @@ namespace JHLib.QuantLIB.Model
         }
 
         private IEnumerable<DenseVector> Spots(Normal normal)
-        {
+       { 
             var spots = DenseVector.Create(N, (_) => equity.spot);
             foreach( var returns in LogReturns(normal) )
             {
@@ -97,6 +109,10 @@ namespace JHLib.QuantLIB.Model
                 throw new Exception("Can't find " + date + " in diffusion dates");
             else
                 return pathsCache[i];
+        }
+        public DenseVector PathsOnIndex(int i)
+        {
+            return pathsCache[i];
         }
     }
 

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{536DB276-B254-4749-8829-AFCECD2B0A74}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ConsoleApplication</RootNamespace>
     <AssemblyName>ConsoleApplication1</AssemblyName>
@@ -77,10 +77,6 @@
     <ProjectReference Include="..\QuantLIB\QuantLIB.csproj">
       <Project>{99bd127d-bcf8-4919-872d-c290f4c2cb2f}</Project>
       <Name>QuantLIB</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XLFunctions\XLFunctions.csproj">
-      <Project>{d5e6ffce-44f9-42bd-8375-713eefcee925}</Project>
-      <Name>XLFunctions</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

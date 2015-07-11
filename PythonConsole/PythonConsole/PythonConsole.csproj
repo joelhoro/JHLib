@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5487F3AC-9D3D-4FF4-A75E-33E51CA0B3B7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PythonConsole</RootNamespace>
+    <AssemblyName>PythonConsole</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IronPython, Version=2.7.0.40, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\IronPython 2.7\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules, Version=2.7.0.40, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\IronPython 2.7\IronPython.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\IronPython 2.7\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\IronPython 2.7\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Metadata, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\IronPython 2.7\Microsoft.Scripting.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="lib\abc.py" />
+    <None Include="lib\aifc.py" />
+    <None Include="lib\antigravity.py" />
+    <None Include="lib\anydbm.py" />
+    <None Include="lib\argparse.py" />
+    <None Include="lib\ast.py" />
+    <None Include="lib\asynchat.py" />
+    <None Include="lib\asyncore.py" />
+    <None Include="lib\atexit.py" />
+    <None Include="lib\audiodev.py" />
+    <None Include="lib\base64.py" />
+    <None Include="lib\BaseHTTPServer.py" />
+    <None Include="lib\Bastion.py" />
+    <None Include="lib\bdb.py" />
+    <None Include="lib\binhex.py" />
+    <None Include="lib\bisect.py" />
+    <None Include="lib\calendar.py" />
+    <None Include="lib\cgi.py" />
+    <None Include="lib\CGIHTTPServer.py" />
+    <None Include="lib\cgitb.py" />
+    <None Include="lib\chunk.py" />
+    <None Include="lib\cmd.py" />
+    <None Include="lib\code.py" />
+    <None Include="lib\codecs.py" />
+    <None Include="lib\codeop.py" />
+    <None Include="lib\collections.py" />
+    <None Include="lib\colorsys.py" />
+    <None Include="lib\commands.py" />
+    <None Include="lib\compileall.py" />
+    <None Include="lib\ConfigParser.py" />
+    <None Include="lib\contextlib.py" />
+    <None Include="lib\Cookie.py" />
+    <None Include="lib\cookielib.py" />
+    <None Include="lib\copy.py" />
+    <None Include="lib\csv.py" />
+    <None Include="lib\decimal.py" />
+    <None Include="lib\difflib.py" />
+    <None Include="lib\dircache.py" />
+    <None Include="lib\dis.py" />
+    <None Include="lib\doctest.py" />
+    <None Include="lib\DocXMLRPCServer.py" />
+    <None Include="lib\dumbdbm.py" />
+    <None Include="lib\dummy_thread.py" />
+    <None Include="lib\dummy_threading.py" />
+    <None Include="lib\filecmp.py" />
+    <None Include="lib\fileinput.py" />
+    <None Include="lib\fnmatch.py" />
+    <None Include="lib\formatter.py" />
+    <None Include="lib\fpformat.py" />
+    <None Include="lib\fractions.py" />
+    <None Include="lib\ftplib.py" />
+    <None Include="lib\functools.py" />
+    <None Include="lib\genericpath.py" />
+    <None Include="lib\getopt.py" />
+    <None Include="lib\getpass.py" />
+    <None Include="lib\gettext.py" />
+    <None Include="lib\glob.py" />
+    <None Include="lib\gzip.py" />
+    <None Include="lib\hashlib.py" />
+    <None Include="lib\heapq.py" />
+    <None Include="lib\hmac.py" />
+    <None Include="lib\htmlentitydefs.py" />
+    <None Include="lib\htmllib.py" />
+    <None Include="lib\HTMLParser.py" />
+    <None Include="lib\httplib.py" />
+    <None Include="lib\ihooks.py" />
+    <None Include="lib\imaplib.py" />
+    <None Include="lib\imghdr.py" />
+    <None Include="lib\imputil.py" />
+    <None Include="lib\inspect.py" />
+    <None Include="lib\io.py" />
+    <None Include="lib\keyword.py" />
+    <None Include="lib\linecache.py" />
+    <None Include="lib\locale.py" />
+    <None Include="lib\macpath.py" />
+    <None Include="lib\macurl2path.py" />
+    <None Include="lib\mailbox.py" />
+    <None Include="lib\mailcap.py" />
+    <None Include="lib\markupbase.py" />
+    <None Include="lib\md5.py" />
+    <None Include="lib\mhlib.py" />
+    <None Include="lib\mimetools.py" />
+    <None Include="lib\mimetypes.py" />
+    <None Include="lib\MimeWriter.py" />
+    <None Include="lib\mimify.py" />
+    <None Include="lib\modulefinder.py" />
+    <None Include="lib\multifile.py" />
+    <None Include="lib\mutex.py" />
+    <None Include="lib\netrc.py" />
+    <None Include="lib\new.py" />
+    <None Include="lib\nntplib.py" />
+    <None Include="lib\ntpath.py" />
+    <None Include="lib\nturl2path.py" />
+    <None Include="lib\numbers.py" />
+    <None Include="lib\opcode.py" />
+    <None Include="lib\optparse.py" />
+    <None Include="lib\os.py" />
+    <None Include="lib\os2emxpath.py" />
+    <None Include="lib\pdb.py" />
+    <None Include="lib\pickle.py" />
+    <None Include="lib\pickletools.py" />
+    <None Include="lib\pipes.py" />
+    <None Include="lib\pkgutil.py" />
+    <None Include="lib\platform.py" />
+    <None Include="lib\plistlib.py" />
+    <None Include="lib\popen2.py" />
+    <None Include="lib\poplib.py" />
+    <None Include="lib\posixfile.py" />
+    <None Include="lib\posixpath.py" />
+    <None Include="lib\pprint.py" />
+    <None Include="lib\profile.py" />
+    <None Include="lib\pstats.py" />
+    <None Include="lib\pyclbr.py" />
+    <None Include="lib\pydoc.py" />
+    <None Include="lib\py_compile.py" />
+    <None Include="lib\Queue.py" />
+    <None Include="lib\quopri.py" />
+    <None Include="lib\random.py" />
+    <None Include="lib\repr.py" />
+    <None Include="lib\rexec.py" />
+    <None Include="lib\rfc822.py" />
+    <None Include="lib\rlcompleter.py" />
+    <None Include="lib\robotparser.py" />
+    <None Include="lib\runpy.py" />
+    <None Include="lib\sched.py" />
+    <None Include="lib\sets.py" />
+    <None Include="lib\sgmllib.py" />
+    <None Include="lib\sha.py" />
+    <None Include="lib\shelve.py" />
+    <None Include="lib\shlex.py" />
+    <None Include="lib\shutil.py" />
+    <None Include="lib\SimpleHTTPServer.py" />
+    <None Include="lib\SimpleXMLRPCServer.py" />
+    <None Include="lib\site.py" />
+    <None Include="lib\smtpd.py" />
+    <None Include="lib\smtplib.py" />
+    <None Include="lib\sndhdr.py" />
+    <None Include="lib\SocketServer.py" />
+    <None Include="lib\sre_compile.py" />
+    <None Include="lib\sre_constants.py" />
+    <None Include="lib\sre_parse.py" />
+    <None Include="lib\ssl.py" />
+    <None Include="lib\stat.py" />
+    <None Include="lib\statvfs.py" />
+    <None Include="lib\string.py" />
+    <None Include="lib\StringIO.py" />
+    <None Include="lib\stringold.py" />
+    <None Include="lib\struct.py" />
+    <None Include="lib\subprocess.py" />
+    <None Include="lib\sunau.py" />
+    <None Include="lib\sunaudio.py" />
+    <None Include="lib\symbol.py" />
+    <None Include="lib\sysconfig.py" />
+    <None Include="lib\tabnanny.py" />
+    <None Include="lib\tarfile.py" />
+    <None Include="lib\telnetlib.py" />
+    <None Include="lib\tempfile.py" />
+    <None Include="lib\textwrap.py" />
+    <None Include="lib\this.py" />
+    <None Include="lib\threading.py" />
+    <None Include="lib\timeit.py" />
+    <None Include="lib\toaiff.py" />
+    <None Include="lib\token.py" />
+    <None Include="lib\tokenize.py" />
+    <None Include="lib\trace.py" />
+    <None Include="lib\traceback.py" />
+    <None Include="lib\types.py" />
+    <None Include="lib\urllib.py" />
+    <None Include="lib\urllib2.py" />
+    <None Include="lib\urlparse.py" />
+    <None Include="lib\user.py" />
+    <None Include="lib\UserDict.py" />
+    <None Include="lib\UserList.py" />
+    <None Include="lib\UserString.py" />
+    <None Include="lib\uu.py" />
+    <None Include="lib\uuid.py" />
+    <None Include="lib\warnings.py" />
+    <None Include="lib\wave.py" />
+    <None Include="lib\weakref.py" />
+    <None Include="lib\webbrowser.py" />
+    <None Include="lib\whichdb.py" />
+    <None Include="lib\xdrlib.py" />
+    <None Include="lib\xmllib.py" />
+    <None Include="lib\xmlrpclib.py" />
+    <None Include="lib\zipfile.py" />
+    <None Include="lib\_abcoll.py" />
+    <None Include="lib\_LWPCookieJar.py" />
+    <None Include="lib\_MozillaCookieJar.py" />
+    <None Include="lib\_pyio.py" />
+    <None Include="lib\_strptime.py" />
+    <None Include="lib\_threading_local.py" />
+    <None Include="lib\_weakrefset.py" />
+    <None Include="lib\__future__.py" />
+    <None Include="lib\__phello__.foo.py" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="shell.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
