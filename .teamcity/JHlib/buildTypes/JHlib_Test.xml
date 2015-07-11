@@ -3,6 +3,9 @@
   <name>2 - Unit Tests for QuantLib</name>
   <description>Some unit tests for QuantLib</description>
   <settings>
+    <options>
+      <option name="artifactRules" value="* =&gt; tests-%build.counter%.zip" />
+    </options>
     <parameters />
     <build-runners>
       <runner id="RUNNER_2" name="" type="MSTest">
