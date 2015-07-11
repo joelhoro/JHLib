@@ -19,7 +19,7 @@
           <param name="dotNetCoverage.PartCover.platformBitness" value="x86" />
           <param name="dotNetCoverage.PartCover.platformVersion" value="v2.0" />
           <param name="dotNetTestRunner.Type" value="MSTest" />
-          <param name="mstest_assemblies_config" value="Tests\testsettings.runsettings" />
+          <param name="mstest_assemblies_list" value="tests.dll" />
           <param name="mstest_enable" value="checked" />
           <param name="mstest_path" value="%system.MSTest.12.0%" />
           <param name="teamcity.step.mode" value="default" />
