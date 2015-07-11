@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="4cb33da1-d86e-47ee-a20c-7bcbbae04c5a" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>3 - Deployment</name>
+  <description>Deployment of binaries to the deployment directory</description>
+  <settings>
+    <parameters />
+    <build-runners>
+      <runner id="RUNNER_3" name="" type="smb-deploy-runner">
+        <parameters>
+          <param name="jetbrains.buildServer.deployer.sourcePath"><![CDATA[**/*.dll
+**/*.exe]]></param>
+          <param name="jetbrains.buildServer.deployer.targetUrl" value="\\localhost\Users\Public\Deployment\JHLib-%build.counter%" />
+          <param name="jetbrains.buildServer.deployer.username" value="joel" />
+          <param name="secure:jetbrains.buildServer.deployer.password" value="zxxa182e07b3b86f759" />
+          <param name="teamcity.step.mode" value="default" />
+        </parameters>
+      </runner>
+    </build-runners>
+    <vcs-settings>
+      <vcs-entry-ref root-id="JoelHorowitz_HttpsGithubComJoelhoroJHLibGit" />
+    </vcs-settings>
+    <requirements />
+    <build-triggers>
+      <build-trigger id="TRIGGER_1" type="buildDependencyTrigger">
+        <parameters>
+          <param name="afterSuccessfulBuildOnly" value="true" />
+          <param name="dependsOn" value="JoelHorowitz_StandardBuild" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
+    <cleanup />
+  </settings>
+</build-type>
+
