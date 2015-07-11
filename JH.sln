@@ -1,21 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "URLParserRunner", "URLParserRunner\URLParserRunner.csproj", "{416B0F9B-2260-432B-B561-59B803358361}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "Utils\Utils.csproj", "{9C51F777-A850-471A-A300-4CDAE7390B35}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XLFunctions", "XLFunctions\XLFunctions.csproj", "{D5E6FFCE-44F9-42BD-8375-713EEFCEE925}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication", "ConsoleApplication\ConsoleApplication.csproj", "{536DB276-B254-4749-8829-AFCECD2B0A74}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerCube", "PowerCube\PowerCube.csproj", "{C20A4AA5-3644-4CD6-A9CE-EBA0FEFFA3C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantLIB", "QuantLIB\QuantLIB.csproj", "{99BD127D-BCF8-4919-872D-C290F4C2CB2F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IronpythonWrapper", "PythonWrapper\IronpythonWrapper.csproj", "{A55FDA69-16DD-4340-BB96-F8A9236F9F00}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{C367D724-D0E9-48F0-9383-20523600F5D6}"
 EndProject
@@ -51,16 +47,6 @@ Global
 		{9C51F777-A850-471A-A300-4CDAE7390B35}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{9C51F777-A850-471A-A300-4CDAE7390B35}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{9C51F777-A850-471A-A300-4CDAE7390B35}.Release|Win32.ActiveCfg = Release|Any CPU
-		{D5E6FFCE-44F9-42BD-8375-713EEFCEE925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5E6FFCE-44F9-42BD-8375-713EEFCEE925}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5E6FFCE-44F9-42BD-8375-713EEFCEE925}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D5E6FFCE-44F9-42BD-8375-713EEFCEE925}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{D5E6FFCE-44F9-42BD-8375-713EEFCEE925}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{D5E6FFCE-44F9-42BD-8375-713EEFCEE925}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5E6FFCE-44F9-42BD-8375-713EEFCEE925}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D5E6FFCE-44F9-42BD-8375-713EEFCEE925}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{D5E6FFCE-44F9-42BD-8375-713EEFCEE925}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{D5E6FFCE-44F9-42BD-8375-713EEFCEE925}.Release|Win32.ActiveCfg = Release|Any CPU
 		{536DB276-B254-4749-8829-AFCECD2B0A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{536DB276-B254-4749-8829-AFCECD2B0A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{536DB276-B254-4749-8829-AFCECD2B0A74}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -91,16 +77,6 @@ Global
 		{99BD127D-BCF8-4919-872D-C290F4C2CB2F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{99BD127D-BCF8-4919-872D-C290F4C2CB2F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{99BD127D-BCF8-4919-872D-C290F4C2CB2F}.Release|Win32.ActiveCfg = Release|Any CPU
-		{A55FDA69-16DD-4340-BB96-F8A9236F9F00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A55FDA69-16DD-4340-BB96-F8A9236F9F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A55FDA69-16DD-4340-BB96-F8A9236F9F00}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{A55FDA69-16DD-4340-BB96-F8A9236F9F00}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{A55FDA69-16DD-4340-BB96-F8A9236F9F00}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{A55FDA69-16DD-4340-BB96-F8A9236F9F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A55FDA69-16DD-4340-BB96-F8A9236F9F00}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A55FDA69-16DD-4340-BB96-F8A9236F9F00}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{A55FDA69-16DD-4340-BB96-F8A9236F9F00}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{A55FDA69-16DD-4340-BB96-F8A9236F9F00}.Release|Win32.ActiveCfg = Release|Any CPU
 		{C367D724-D0E9-48F0-9383-20523600F5D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C367D724-D0E9-48F0-9383-20523600F5D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C367D724-D0E9-48F0-9383-20523600F5D6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
