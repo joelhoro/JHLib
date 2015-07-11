@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="46fe9c9e-1dd0-433c-89a5-0d2d7036d00a" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
   <name>JH Lib</name>
-  <description>My own libraries</description>
+  <description>First test of JHLib on Teamcity</description>
   <parameters />
   <cleanup>
     <policy type="builds" cleanup-level="ARTIFACTS">
