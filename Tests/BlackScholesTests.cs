@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Tests
 {
@@ -26,6 +27,8 @@ namespace Tests
             double price = BlackScholes.Price(optionType, S, K, T, r, vol);
             double priceActual = 13.640652756637222;
             Assert.AreEqual(price, priceActual,TOLERANCE);
+
+            File.WriteAllText("artifact.txt", "Testing");
         }
 
         [TestMethod]
@@ -36,6 +39,8 @@ namespace Tests
             double T = 2;
             double r = 0.02;
             OptionType optionType = OptionType.Call;
+
+            File.WriteAllText("artifact2.txt", "Testing");
 
             var rnd = new Random(0);
             for(int i = 0; i < 5; i++)
