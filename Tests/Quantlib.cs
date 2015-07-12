@@ -32,15 +32,38 @@ namespace Tests
             var K = 100;
             var r = 0.04;
             var T = 4;
+
+            foreach (var optionType in new[] { OptionType.Call, OptionType.Put })
+            {
+                var volInitial = 0.2;
+
+                var price = BlackScholes.Price(optionType, fwd, K, T, r, volInitial);
+
+                var vol = BlackScholes.ImpliedVol(optionType, price, fwd, K, T, r);
+
+                Assert.AreEqual(volInitial, vol, TOLERANCE);
+            }
+        }
+
+        [TestMethod]
+        public void TestDelta()
+        {
+            var fwd = 105;
+            var K = 100;
+            var r = 0.04;
+            var T = 4;
+            var vol = 0.2;
             var optionType = OptionType.Call;
+            var delta = BlackScholes.Price(optionType, fwd, K, T, r, vol, PriceType.Δ);
 
-            var volInitial = 0.2;
+            var bump = 1e-3;
+            var price1 = BlackScholes.Price(optionType, fwd * (1 - bump), K, T, r, vol);
+            var price2 = BlackScholes.Price(optionType, fwd * (1 + bump), K, T, r, vol);
+            var deltaExpected = (price2 - price1) / 2 / bump;
+            Assert.AreEqual(deltaExpected, delta, 1e-3);
 
-            var price = BlackScholes.Price(optionType, fwd, K, T, r, volInitial);
 
-            var vol = BlackScholes.ImpliedVol(optionType, price, fwd, K, T, r);
 
-            Assert.AreEqual(volInitial, vol, TOLERANCE);
         }
     }
 }
