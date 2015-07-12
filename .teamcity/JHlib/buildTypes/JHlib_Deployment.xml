@@ -3,6 +3,9 @@
   <name>3 - Deployment</name>
   <description>Deployment of binaries to the deployment directory</description>
   <settings>
+    <disabled-settings>
+      <setting-ref ref="TRIGGER_1" />
+    </disabled-settings>
     <parameters />
     <build-runners>
       <runner id="RUNNER_3" name="" type="smb-deploy-runner">
