@@ -4,7 +4,7 @@
   <description>Standard release build</description>
   <settings>
     <options>
-      <option name="artifactRules" value="**/*.exe =&gt; jhlib-%build.counter%.zip&#xA;**/*.dll =&gt; jhlib-%build.counter%.zip" />
+      <option name="artifactRules" value="**/*.exe =&gt; jhlib-%build.counter%.zip&#xA;**/*.dll =&gt; jhlib-%build.counter%.zip&#xA;QuantLIB\bin\Release =&gt;" />
     </options>
     <parameters />
     <build-runners>
