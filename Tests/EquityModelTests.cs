@@ -14,8 +14,10 @@ namespace Tests
     public class EquityModelTests
     {
         const double TOLERANCE = 1e-6;
+        EquityModel Model;
 
-        private EquityModel GetModel() 
+        [TestInitialize]
+        public void Initialize() 
         {
             const string ticker = "MSFT";
             const int N = 10000000;
@@ -28,11 +30,14 @@ namespace Tests
             var endDate = midDate + year;
 
             var dates = new List<Date> { midDate, endDate };
-            var model = new EquityModel( equity, dates, N );
+            Model = new EquityModel( equity, dates, N );
             var normal = new Normal();
 
-            model.ComputePaths(normal);
-            return model;
+            var seed = new Random().Next();
+            Console.WriteLine("Using seed {0}", seed);
+            normal.RandomSource = new Random(seed);
+
+            Model.ComputePaths(normal);
         }
 
         /// <summary>
@@ -42,22 +47,21 @@ namespace Tests
         public void EquityModel()
         {
             const string NEWLINE = "\n";
-            var model = GetModel();
-            var equity = model.equity;
-            var dates = model.diffusiondates;
+            var equity = Model.equity;
+            var dates = Model.diffusiondates;
             var today = Context.TODAY;
 
             double K = equity.spot;
             foreach( var evaluationDate in dates )
             {
-                var values = model.PathsOnDate(evaluationDate);
+                var values = Model.PathsOnDate(evaluationDate);
 
                 // apply call option payoff
                 for (int i = 0; i < values.Count; i++)
                     values[i] = Math.Max(values[i]-K, 0);
 
                 var MCPrice = values.Average();
-                var stdev = values.StdDev() / Math.Sqrt(model.N);
+                var stdev = values.StdDev() / Math.Sqrt(Model.N);
 
                 double maturity = (evaluationDate-today).Days / 365;
                 var BSPrice = BlackScholes.Price(OptionType.Call, equity.spot, K, maturity, 0, equity.sigma);
@@ -79,15 +83,14 @@ namespace Tests
         public void EquityModelForward()
         {
             const string NEWLINE = "\n";
-            var model = GetModel();
-            var equity = model.equity;
-            var dates = model.diffusiondates;
+            var equity = Model.equity;
+            var dates = Model.diffusiondates;
             var today = Context.TODAY;
 
             double K = 1;
 
-            var values = model.PathsOnDate(dates[1]).PointwiseDivide(
-                         model.PathsOnDate(dates[0])
+            var values = Model.PathsOnDate(dates[1]).PointwiseDivide(
+                         Model.PathsOnDate(dates[0])
                             ) as DenseVector;
 
             // apply call option payoff
@@ -95,7 +98,7 @@ namespace Tests
                 values[i] = Math.Max(values[i] - K, 0);
 
             var MCPrice = values.Average();
-            var stdev = values.StdDev() / Math.Sqrt(model.N);
+            var stdev = values.StdDev() / Math.Sqrt(Model.N);
 
             double maturity = (dates[1]-dates[0]).Days / 365;
             var BSPrice = BlackScholes.Price(OptionType.Call, 1, K, maturity, 0, equity.sigma);
