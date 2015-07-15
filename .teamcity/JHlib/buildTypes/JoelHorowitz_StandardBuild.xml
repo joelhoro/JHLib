@@ -5,6 +5,7 @@
   <settings>
     <options>
       <option name="artifactRules" value="**/*.exe =&gt; jhlib-all-%build.counter%.zip&#xA;**/*.dll =&gt; jhlib-all-%build.counter%.zip&#xA;QuantLIB\bin\Release =&gt; QL-%build.counter%.zip" />
+      <option name="buildNumberPattern" value="%build.number%" />
     </options>
     <parameters />
     <build-runners>
