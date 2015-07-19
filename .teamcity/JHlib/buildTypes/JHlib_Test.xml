@@ -21,6 +21,7 @@
           <param name="dotNetCoverage.PartCover.Reg" value="selected" />
           <param name="dotNetCoverage.PartCover.platformBitness" value="x86" />
           <param name="dotNetCoverage.PartCover.platformVersion" value="v2.0" />
+          <param name="dotNetCoverage.tool" value="dotcover" />
           <param name="dotNetTestRunner.Type" value="MSTest" />
           <param name="mstest_assemblies_list" value="**/bin/**/tests.dll" />
           <param name="mstest_enable" value="checked" />
