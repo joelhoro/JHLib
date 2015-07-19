@@ -37,7 +37,14 @@
       <vcs-entry-ref root-id="JoelHorowitz_HttpsGithubComJoelhoroJHLibGit" />
     </vcs-settings>
     <requirements />
-    <build-triggers />
+    <build-triggers>
+      <build-trigger id="TRIGGER_3" type="buildDependencyTrigger">
+        <parameters>
+          <param name="afterSuccessfulBuildOnly" value="true" />
+          <param name="dependsOn" value="JoelHorowitz_StandardBuild" />
+        </parameters>
+      </build-trigger>
+    </build-triggers>
     <cleanup />
   </settings>
 </build-type>
