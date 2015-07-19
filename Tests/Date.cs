@@ -30,5 +30,16 @@ namespace Tests
             Assert.AreNotEqual(Date.Today, 0);
             Assert.AreEqual("7/14/2015",new Date(new DateTime(2015,7,14)).ToString());
         }
+
+        [TestMethod]
+        public void TestSchedule()
+        {
+            var numberOfDates = 25;
+            var schedule = Date.GenerateSchedule(Date.Today, Frequency.w, numberOfDates: numberOfDates);
+            var interval = schedule.Last() - schedule.First(); 
+            var expected = new TimeSpan(( numberOfDates - 1 )* 7, 0, 0, 0);
+            Assert.AreEqual(expected, interval);
+        }
+
     }
 }
