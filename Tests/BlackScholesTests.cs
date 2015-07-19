@@ -63,7 +63,7 @@ namespace Tests
                 total += BlackScholes.Price(OptionType.Call,100,100,3,0.03, 0.2);
 
             double elapsedμs = (DateTime.Now - t).TotalMilliseconds / N * 1000;
-            const double MAXTIME = 0.5; // μ-seconds
+            const double MAXTIME = 0.8; // μ-seconds
             Console.WriteLine("Average over {0} runs: {1} μs elapsed", N, elapsedμs);
             Assert.IsTrue(elapsedμs < MAXTIME);
         }
