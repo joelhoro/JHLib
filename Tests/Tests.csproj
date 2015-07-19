@@ -59,6 +59,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Date.cs" />
+    <Compile Include="MCPricerTests.cs" />
     <Compile Include="Quantlib.cs" />
     <Compile Include="BlackScholesTests.cs" />
     <Compile Include="EquityModelTests.cs" />

@@ -11,6 +11,7 @@ namespace JHLib.QuantLIB.Core
         public static Frequency d1 { get { return new Frequency(1); } }
         public static Frequency d2 { get { return new Frequency(2); } }
         public static Frequency w { get { return new Frequency(7); } }
+        public static Frequency y1 { get { return new Frequency(360); } }
     }
 
     public class Date

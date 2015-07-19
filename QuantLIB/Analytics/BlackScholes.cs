@@ -1,4 +1,5 @@
-﻿using MathNet.Numerics.Distributions;
+﻿using JHLib.QuantLIB.Model;
+using MathNet.Numerics.Distributions;
 using System;
 
 namespace JHLib.QuantLIB
@@ -36,6 +37,13 @@ namespace JHLib.QuantLIB
             }
 
             throw new Exception();
+        }
+
+        public static double Price(OptionType optionType, Equity equity, double K,
+            double T, double r, PriceType priceType = PriceType.Price)
+        {
+            var impliedVol = equity.sigma;
+            return Price(optionType, equity.spot, K, T, r, impliedVol, priceType);
         }
 
         public static double ImpliedVol(OptionType optionType, double price, double Fwd, double K,
