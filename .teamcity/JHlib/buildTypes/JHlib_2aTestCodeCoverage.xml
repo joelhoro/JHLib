@@ -21,7 +21,7 @@
           <param name="dotNetCoverage.PartCover.includes" value="[*]*" />
           <param name="dotNetCoverage.PartCover.platformBitness" value="x86" />
           <param name="dotNetCoverage.PartCover.platformVersion" value="v2.0" />
-          <param name="dotNetCoverage.dotCover.filters" value="+:*.dll" />
+          <param name="dotNetCoverage.dotCover.filters" value="+:QL" />
           <param name="dotNetCoverage.tool" value="dotcover" />
           <param name="dotNetTestRunner.Type" value="NUnit" />
           <param name="nunit_enabled" value="checked" />
