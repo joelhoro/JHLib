@@ -26,7 +26,8 @@
           <param name="dotNetTestRunner.Type" value="NUnit" />
           <param name="nunit_enabled" value="checked" />
           <param name="nunit_environment" value="v4.0" />
-          <param name="nunit_include" value="**/bin/**/tests.dll" />
+          <param name="nunit_include"><![CDATA[**/bin/**/tests.dll
+**/bin/**/QL.dll]]></param>
           <param name="nunit_platform" value="MSIL" />
           <param name="nunit_version" value="NUnit-2.6.4" />
           <param name="teamcity.step.mode" value="default" />
