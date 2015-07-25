@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using JHLib.QuantLIB;
 using JHLib.QuantLIB.Core;
 using JHLib.QuantLIB.Model;
+using System.Diagnostics;
 
 namespace Tests
 {
@@ -17,6 +18,7 @@ namespace Tests
             Date today = Context.TODAY;
 
             double previousVariance = 0;
+            Trace.WriteLine("Testing trace");
             for (Date date = today; date < today + new Frequency(3650); date = date + new Frequency(30) )
             {
                 double newVariance = equity.Variance(date);
