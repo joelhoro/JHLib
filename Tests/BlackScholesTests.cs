@@ -28,7 +28,7 @@ namespace Tests
             double priceActual = 13.640652756637222;
             Assert.AreEqual(price, priceActual,TOLERANCE);
 
-            File.WriteAllText("artifact.txt", "Testing");
+            File.WriteAllText("artifact.txt", "Testing at " + DateTime.Now.ToString());
         }
 
         [TestMethod]
