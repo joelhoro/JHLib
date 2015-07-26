@@ -33,6 +33,8 @@ namespace Tests
             var number = new Random().Next(10) + 25;
             var message = string.Format(@"##teamcity[buildStatisticValue key='mymetric' value='{0}']",number);
             Console.WriteLine(message);
+            var message2 = string.Format(@"##teamcity[buildStatisticValue key='vNext.Average Migration Time' value='{0}']", number);
+            Console.WriteLine(message2);
             
             //Debugger.Launch();
             File.WriteAllText("artifact.txt", "Testing at " + DateTime.Now.ToString());
