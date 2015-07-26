@@ -79,7 +79,7 @@ namespace Tests
         /// <summary>
         /// Check that the MonteCarlo price of a forward starting call matches the analytical value
         /// </summary>
-        [TestMethod]
+        [TestMethod,TestCategory("Slow")]
         public void EquityModelForward()
         {
             const string NEWLINE = "\n";

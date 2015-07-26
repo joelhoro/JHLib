@@ -12,7 +12,7 @@ namespace Tests
     [TestClass]
     public class MCPricerTests
     {
-        [TestMethod]
+        [TestMethod,TestCategory("Slow")]
         public void TestMCPricerForward()
         {
             string ticker = "MSFT";
