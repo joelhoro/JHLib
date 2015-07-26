@@ -24,11 +24,14 @@ namespace Tests
             double r = 0.02;
             double vol = 0.2;
             OptionType optionType = OptionType.Call;
-
+    
             double price = BlackScholes.Price(optionType, S, K, T, r, vol);
             double priceActual = 13.640652756637222;
             Assert.AreEqual(price, priceActual,TOLERANCE);
-            Console.WriteLine(@"##teamcity[setParameter name='ddd' value='fff']");
+            Console.WriteLine("Testing");
+//            Console.WriteLine(@"##teamcity[setParameter name='ddd' value='fff']");
+            Console.WriteLine(@"#teamcity[buildStatisticValue key='mymetric' value='324']");
+            
             //Debugger.Launch();
             File.WriteAllText("artifact.txt", "Testing at " + DateTime.Now.ToString());
 
