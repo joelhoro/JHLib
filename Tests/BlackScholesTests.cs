@@ -30,7 +30,9 @@ namespace Tests
             Assert.AreEqual(price, priceActual,TOLERANCE);
             Console.WriteLine("Testing");
 //            Console.WriteLine(@"##teamcity[setParameter name='ddd' value='fff']");
-            Console.WriteLine(@"##teamcity[buildStatisticValue key='mymetric' value='324']");
+            var number = new Random().Next(10) + 25;
+            var message = string.Format(@"##teamcity[buildStatisticValue key='mymetric' value='{0}']",number);
+            Console.WriteLine(message);
             
             //Debugger.Launch();
             File.WriteAllText("artifact.txt", "Testing at " + DateTime.Now.ToString());
