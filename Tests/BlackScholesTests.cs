@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
+using JHLib.QuantLIB.Utils;
 
 namespace Tests
 {
@@ -31,10 +32,7 @@ namespace Tests
             Console.WriteLine("Testing");
 //            Console.WriteLine(@"##teamcity[setParameter name='ddd' value='fff']");
             var number = new Random().Next(10) + 25;
-            var message = string.Format(@"##teamcity[buildStatisticValue key='mymetric' value='{0}']",number);
-            Console.WriteLine(message);
-            var message2 = string.Format(@"##teamcity[buildStatisticValue key='vNext.Average Migration Time' value='{0}']", number);
-            Console.WriteLine(message2);
+            TeamCity.Log("mymetric", number);
             
             //Debugger.Launch();
             File.WriteAllText("artifact.txt", "Testing at " + DateTime.Now.ToString());
@@ -76,6 +74,7 @@ namespace Tests
             const double MAXTIME = 0.8; // μ-seconds
             Console.WriteLine("Average over {0} runs: {1} μs elapsed", N, elapsedμs);
             Assert.IsTrue(elapsedμs < MAXTIME);
+            TeamCity.Log("QL - Average Blackscholes calc time (microsec)", Math.Floor(elapsedμs));
         }
     }
 }
