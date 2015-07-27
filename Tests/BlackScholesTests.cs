@@ -73,8 +73,8 @@ namespace Tests
             double elapsedμs = (DateTime.Now - t).TotalMilliseconds / N * 1000;
             const double MAXTIME = 0.8; // μ-seconds
             Console.WriteLine("Average over {0} runs: {1} μs elapsed", N, elapsedμs);
-            Assert.IsTrue(elapsedμs < MAXTIME);
             TeamCity.Log("QL - Average Blackscholes calc time (ns)", Math.Floor(elapsedμs*1000));
+            Assert.IsTrue(elapsedμs < MAXTIME);
         }
     }
 }
