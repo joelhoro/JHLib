@@ -58,6 +58,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CompressionTests.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="MCPricerTests.cs" />
     <Compile Include="Quantlib.cs" />
@@ -70,6 +71,10 @@
     <ProjectReference Include="..\QuantLIB\QuantLIB.csproj">
       <Project>{99bd127d-bcf8-4919-872d-c290f4c2cb2f}</Project>
       <Name>QuantLIB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utils\Utils.csproj">
+      <Project>{9c51f777-a850-471a-a300-4cdae7390b35}</Project>
+      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
