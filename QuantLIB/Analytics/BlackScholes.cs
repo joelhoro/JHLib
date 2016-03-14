@@ -19,7 +19,7 @@ namespace JHLib.QuantLIB
 
             double d1 = (Math.Log(Fwd / K) + 0.5*std*std ) / std;
             double d2 = d1 - std;
-
+            
             switch(priceType)
             {
                 case PriceType.Price:

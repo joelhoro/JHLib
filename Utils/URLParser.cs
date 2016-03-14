@@ -15,7 +15,7 @@ namespace JHLib.Utils
             switch (type)
             {
                 case BBGParser  :       return new BBGParser();
-                default         :       return new Parser(type);
+                default         :       throw new NotImplementedException();
             }
         }
 
@@ -40,23 +40,20 @@ namespace JHLib.Utils
         }
     }
 
-    public class Parser
+    public abstract class Parser
     {
         string _type;
         public Parser() { }
         public Parser(string type) { _type = type; }
 
-        public virtual void RunCommand(string command)
-        {
-            Console.WriteLine("No action known for parser of type '{0}'", _type);
-        }
+        public abstract void RunCommand(string command);
     }
 
     public class BBGParser : Parser
     {
         public override void RunCommand(string command)
         {
-            Console.WriteLine("Running BBGParser {0}", command);                
+            Console.WriteLine("Running BBGParser {0}", command);
         }
     }
 

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<style>
+	body {
+		font-family: Verdana;
+	}
+
+	#status {
+		font-weight: bold;
+	}
+
+	#socketstatus {
+		font-family: Lucida Console;
+		padding: 3px 10px;
+		font-size: 10pt;
+	}
+
+	.socketconnecting {
+		background-color: blue;
+		color: white;
+	}
+
+	.socketconnected {
+		background-color: green;
+		color: white;
+	}
+
+	.socketdisconnected {
+		background-color: red;
+		color: white;
+	}
+
+
+</style>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>WebSockets Demo</title>
+</head>
+<body>
+  <div id="page-wrapper">
+    <h1>WebSockets Demo</h1>
+
+    <span id='socketstatus'>Socket status: <span id="status">connecting...</span></span>
+
+    <h2>Messages</h2>
+    <ul id="messages"></ul>
+
+  </div>
+
+</body>
+</html>
+
+<script src='js/jquery-2.2.1.min.js'></script>
+<script type="text/javascript">
+
+$(document).ready( function() {
+
+    // Get references to elements on the page.
+    var messagesList = $('#messages');
+    var socketStatus = $('#status');
+
+	// Create a new WebSocket.
+	var hostname = location.hostname;
+	//debugger;
+	var url = 'ws://'+hostname+':8080/webdump';
+
+	var socket = new WebSocket(url);
+	$("#socketstatus").addClass("socketconnecting");
+
+	// Show a connected message when the WebSocket is opened.
+	socket.onopen = function(event) {
+	  socketOpen = true;
+	  socketStatus.html('Connected to: ' + event.currentTarget.url);
+	  socketStatus.className = 'open';
+	  $("#socketstatus").removeClass().addClass("socketconnected");
+	};
+
+	// Handle messages sent by the server.
+	socket.onmessage = function(event) {
+	  var message = event.data;
+	  messagesList.append(message);
+	//  focus.scrollIntoViewIfNeeded();
+	};
+
+	socket.onclose = function(event) {
+ 	    $("#socketstatus").removeClass().addClass("socketdisconnected");
+		socketStatus.html('Disconnected');
+		console.debug("Server closed");
+	}
+
+	window.socket = socket;
+	//debugger;
+} );
+	
+</script>

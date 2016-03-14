@@ -23,6 +23,8 @@ Bullet pancaked on the inner skull.
 -Ain't necessarily what it looks like.
 -No?
 ";
+            message = "abaaadeefaheo";
+
             var huffmanData = HuffmanData.FromString(message);
 
             Assert.AreEqual(message, huffmanData.ToString());
