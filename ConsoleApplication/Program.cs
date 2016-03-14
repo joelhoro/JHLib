@@ -14,10 +14,12 @@ namespace ConsoleApplication
     using MathNet.Numerics.Distributions;
     using System.Diagnostics;
     using System.IO;
+    using System.Reflection;
+    using System.Threading;
     using System.Web.Script.Serialization;
 
 
-    class Program
+    public class Program
     {
         static void TestHandle()
         {
@@ -56,7 +58,7 @@ namespace ConsoleApplication
             const string NEWLINE = "\n";
 
             //DumpToFile(model);
-            DumpToFile(new Date(DateTime.Now));
+            //DumpToFile(new Date(DateTime.Now));
             
 
             var t = DateTime.Now;
@@ -79,9 +81,9 @@ namespace ConsoleApplication
 
         }
 
-        private static void DumpToFile(object obj)
+        private static void DumpToFile(object obj, string filename)
         {
-            string filename = @"c:\temp\test.txt";
+//            string filename = @"c:\temp\test.txt";
             var file = new StreamWriter(filename);
             //ObjectDumper.Dumper.Dump(model, "Model", file);
             var json = new JavaScriptSerializer().Serialize(obj);
@@ -89,6 +91,25 @@ namespace ConsoleApplication
             file.Close();
             Process.Start(filename);
         }
+
+        private static void ExecuteDump()
+        {
+            string filename = @"c:\temp\test.txt";
+            var text = File.ReadAllText(filename);
+            //ObjectDumper.Dumper.Dump(model, "Model", file);
+            var job = new JavaScriptSerializer().Deserialize<Job>(text);
+
+            //var assembly = Assembly.Load(job.Assembly);
+            var assembly = Assembly.LoadFrom(@"c:\Users\Joel\Dropbox\Programming\GIT\csharp\JHLib\Tests\bin\Debug\ConsoleApplication1b.exe");
+            //var assembly = Assembly.GetExecutingAssembly();
+            var type = assembly.GetType("ConsoleApplication.Program");
+            var fn = type.GetMethod(job.Function);
+            var x = fn.Invoke(null, new object[] { job.Arg });
+            var output = @"c:\temp\results.txt";
+            DumpToFile(x,output);
+            Process.Start(output);
+        }
+
 
         public static void BlackScholesTest(int N)
         {
@@ -102,32 +123,72 @@ namespace ConsoleApplication
             Console.WriteLine(p);
         }
 
-        public void TestCPP()
+        public static double DistFn(double x)
         {
-
+            Console.WriteLine("Sleeping executing {0}", x);
+            Thread.Sleep(5000);
+            var y = x * x;
+//            Console.WriteLine("Executing with {0}: {1}", x, y);
+            return y;
         }
 
+
+        public struct Job
+        {
+            public string Assembly;
+            public string Function;
+            public double Arg;
+        }
+
+        public static void CreateTasks()
+        {
+            var i = 0;
+
+            while (i++ < 1000)
+            {
+                var fileNameMask = @"c:\temp\agent\job1\args\taskargs{0}.txt";
+                var text = string.Format("{{\"Function\":\"DistFn\",\"Arg\":{0}}}",i);
+
+                var fileName = string.Format(fileNameMask, i);
+                File.WriteAllText(fileName, text);
+                //if (i % 100 == 0)
+                    Console.WriteLine("Creating file " + fileName);
+//                Thread.Sleep(1);
+            }
+
+        }
 
         public static void Main()
         {
             Console.WriteLine(DateTime.Now);
             Console.WriteLine("============================");
 
-            EquityModel();
+            CreateTasks();
+            return;
+
+            var job = new Job {
+                Assembly = Assembly.GetExecutingAssembly().Location,
+                Function = "DistFn",
+                Arg = 5.0
+            };
+            string filename = @"c:\temp\test.txt";
+            DumpToFile(job,filename);
+            //ExecuteDump();
+//            EquityModel();
             return;
 
 
-            var a = new GraphNodelet<double>(1);
-            var b = new GraphNodelet<double>(2);
-            var c = new GraphNodelet<double>(() => a.V + b.V);
-            var d = new GraphNodelet<double>(() => b.V + c.V);
-            var e = new GraphNodelet<double>(() => b.V + d.V);
+            //var a = new GraphNodelet<double>(1);
+            //var b = new GraphNodelet<double>(2);
+            //var c = new GraphNodelet<double>(() => a.V + b.V);
+            //var d = new GraphNodelet<double>(() => b.V + c.V);
+            //var e = new GraphNodelet<double>(() => b.V + d.V);
             
-            var x = c.V;
-            var y = e.V;
-            c.DebugMode = true;
-            c.Invalidate();
-            x = e.V;
+            //var x = c.V;
+            //var y = e.V;
+            //c.DebugMode = true;
+            //c.Invalidate();
+            //x = e.V;
 
             Console.WriteLine("============================");
         }

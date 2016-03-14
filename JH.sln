@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deadlocked", "Deadlocked\Deadlocked.csproj", "{34DFD2AE-3209-4F01-B1A3-F497A8BF2C3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agent", "Agent\Agent.csproj", "{B8EF5384-C82C-4174-9B66-8A385E2BE840}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocket", "WebSocket\WebSocket.csproj", "{5E4D1001-C1FC-4995-8FCA-BCAC03E80F33}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +101,26 @@ Global
 		{34DFD2AE-3209-4F01-B1A3-F497A8BF2C3C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{34DFD2AE-3209-4F01-B1A3-F497A8BF2C3C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{34DFD2AE-3209-4F01-B1A3-F497A8BF2C3C}.Release|Win32.ActiveCfg = Release|Any CPU
+		{B8EF5384-C82C-4174-9B66-8A385E2BE840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8EF5384-C82C-4174-9B66-8A385E2BE840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8EF5384-C82C-4174-9B66-8A385E2BE840}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B8EF5384-C82C-4174-9B66-8A385E2BE840}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B8EF5384-C82C-4174-9B66-8A385E2BE840}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{B8EF5384-C82C-4174-9B66-8A385E2BE840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8EF5384-C82C-4174-9B66-8A385E2BE840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8EF5384-C82C-4174-9B66-8A385E2BE840}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B8EF5384-C82C-4174-9B66-8A385E2BE840}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B8EF5384-C82C-4174-9B66-8A385E2BE840}.Release|Win32.ActiveCfg = Release|Any CPU
+		{5E4D1001-C1FC-4995-8FCA-BCAC03E80F33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E4D1001-C1FC-4995-8FCA-BCAC03E80F33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E4D1001-C1FC-4995-8FCA-BCAC03E80F33}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5E4D1001-C1FC-4995-8FCA-BCAC03E80F33}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5E4D1001-C1FC-4995-8FCA-BCAC03E80F33}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{5E4D1001-C1FC-4995-8FCA-BCAC03E80F33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E4D1001-C1FC-4995-8FCA-BCAC03E80F33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E4D1001-C1FC-4995-8FCA-BCAC03E80F33}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5E4D1001-C1FC-4995-8FCA-BCAC03E80F33}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5E4D1001-C1FC-4995-8FCA-BCAC03E80F33}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
