@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+
+<link rel=stylesheet type='text/css' href='style.css'></link>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>WebSockets Demo</title>
+</head>
+<body>
+  <div id="page-wrapper">
+    <h1>WebDump</h1>
+
+    <ul id="messages"></ul>
+<button id='clearButton'>ClearAll</button>
+<button id='addButton'>Add message</button>
+
+    <h2>Messages</h2>
+<h3><button id='trashexpand'>+</button> Trash</h3>
+<span class='hidden' id='trash'></span>
+<h3>Dumps</h3>
+<div id='dumps'></div>
+
+</body>
+</html>
+
+<script src='js/jquery-2.2.1.min.js'></script>
+<script src='js/angular2-all-testing.umd.dev.js'></script>
+
+Copy
+
+<script type="text/javascript">
+
+$(document).ready( function() {
+
+    // Get references to elements on the page.
+    var messagesList = $('#messages');
+    var socketStatus = $('#status');
+    var dumps = $('#dumps');
+
+	function clearButton() {
+    	$('#trash').append(dumps.html())
+    	dumps.html("");
+    }
+
+    $('#clearButton').click(clearButton);
+
+    var id = 1;
+
+	function addMessage() {
+	    	message = $("<div></div>");
+	    	message.html("Message #" + id);
+	    	message.id = "mess"+id++;
+	    	dumps.append(message);
+	};
+
+    $('#addButton').click(addMessage)
+
+    var trashVisible = false;
+    var trashExpand = $('#trash');
+
+    function toggleTrash() {
+    	trashVisible = !trashVisible;
+    	if (trashVisible) {
+    		trashExpand.removeClass('hidden');
+    		$('#trashexpand').html('-');
+    	}
+    	else {
+    		trashExpand.addClass('hidden');
+    		$('#trashexpand').html('+');
+    	}
+    }
+
+    $('#trashexpand').click(toggleTrash);
+    window.toggletTrash = toggleTrash;
+    //$('#trashexpand').
+    addMessage();
+    addMessage();
+    clearButton();
+    addMessage();
+    addMessage();
+    addMessage();
+
+	// Create a new WebSocket.
+	//debugger;
+} );
+
+</script>
