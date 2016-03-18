@@ -13,7 +13,7 @@
 
     <ul id="messages"></ul>
 	<div ng-controller='demo' ng-init='initialize()'>
-		<button ng-click='clearMessages()'>ClearAll</button>
+		<button ng-click='moveToTrash()'>Move to trash</button>
 		<button ng-click='addMessage()'>Add message</button>
 
 	    <h2>Messages</h2>
@@ -21,7 +21,9 @@
 			<button ng-click='toggleTrashVisibility()'>
 				{{trashVisible ? '-' : '+'}}
 			</button>
-			Trash
+			Trash ({{trash.length}} items)
+			<button ng-click='restoreTrash()'>Restore</button>
+			<button ng-click='emptyTrash()'>Empty trash</button>
 		</h3>
 			<message-list ng-show='trashVisible' list='trash'></message-list>
 		<h3>Dumps</h3>
@@ -49,12 +51,19 @@ angular.module('app', [])
 	    var message = { id: $scope.id, content: "Message #" + $scope.id++ };
 		$scope.messages.push(message);
 	}
-	$scope.clearMessages = function() {
+	$scope.moveToTrash = function() {
 		$scope.trash = $scope.trash.concat($scope.messages);
 		$scope.messages = [];
 	}
 	$scope.toggleTrashVisibility = function() {
 		$scope.trashVisible = !$scope.trashVisible;
+	}
+	$scope.emptyTrash = function() {
+		$scope.trash = [];
+	}
+	$scope.restoreTrash = function() {
+		$scope.messages = $scope.trash.concat($scope.messages);
+		$scope.emptyTrash();
 	}
 
 	$scope.initialize = function() {
@@ -62,7 +71,7 @@ angular.module('app', [])
 		$scope.addMessage();
 		$scope.addMessage();
 		$scope.addMessage();
-		$scope.clearMessages();
+		$scope.moveToTrash();
 		$scope.addMessage();	
 	}
 	
