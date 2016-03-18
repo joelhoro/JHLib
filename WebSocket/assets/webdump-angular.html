@@ -12,21 +12,21 @@
     <h1>WebDump</h1>
 
     <ul id="messages"></ul>
-<div ng-controller='demo' ng-init='initialize()'>
-<button ng-click='clearMessages()'>ClearAll</button>
-<button ng-click='addMessage()'>Add message</button>
+	<div ng-controller='demo' ng-init='initialize()'>
+		<button ng-click='clearMessages()'>ClearAll</button>
+		<button ng-click='addMessage()'>Add message</button>
 
-    <h2>Messages</h2>
+	    <h2>Messages</h2>
+		<h3>
+			<button ng-click='toggleTrashVisibility()'>
+				{{trashVisible ? '-' : '+'}}
+			</button>
+			Trash
+		</h3>
+			<message-list ng-show='trashVisible' list='trash'></message-list>
+		<h3>Dumps</h3>
+			<message-list list='messages'></message-list>
 
-	<h3>
-		<button ng-click='toggleTrashVisibility()'>{{trashVisible ? '-' : '+'}}</button>Trash</h3>
-		<div ng-show='trashVisible' ng-repeat='model in trash'>
-			<div id='mess{{model.id}}'>{{model.content}}</div>
-		</div>
-	<h3>Dumps</h3>
-		<div ng-repeat='model in messages'>
-			<div id='mess{{model.id}}'>{{model.content}}</div>
-		</div>
 	</div>
 
 </body>
@@ -66,7 +66,17 @@ angular.module('app', [])
 		$scope.addMessage();	
 	}
 	
-} ] );
+} ] )
+// message-list template directive
+.directive('messageList', function() {
+	return {
+		restrict: 'E',
+		scope: { list : '=' },
+		template: "<div ng-repeat='model in list'>"
+		+"	<div id='mess{{model.id}}'>{{model.content}}</div>"
+		+"<\div>"
+	}
+} );
 
 
 </script>
