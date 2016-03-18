@@ -3,7 +3,7 @@ angular.module('webSocketApp', [])
 	$scope.messages = [];
 	$scope.trash = [];
 	$scope.id = 1;
-	$scope.trashVisible = false;
+	$scope.trashVisible = true;
 
 	$scope.addMessage = function() {
 	    var message = { id: $scope.id, content: "Message #" + $scope.id++ };
@@ -17,7 +17,7 @@ angular.module('webSocketApp', [])
 		}
 		else {
 			// only move that message to trash
-			$.merge($scope.trash,message);
+			$scope.trash.push(message);
 			var index = $scope.messages.indexOf(message);
 			$scope.messages.splice(index,1)
 		}
@@ -40,6 +40,8 @@ angular.module('webSocketApp', [])
 		$scope.addMessage();
 		$scope.moveToTrash();
 		$scope.addMessage();	
+		$scope.addMessage();	
+		$scope.addMessage();	
 	}
 	
 } ] )
@@ -48,16 +50,21 @@ angular.module('webSocketApp', [])
 	var tpl = `
 	<div class=panel ng-repeat='model in list'>
 			<div class='panel-body' id='mess{{model.id}}'>
-				<button class='btn btn-danger'ng-click='moveToTrashFn(model)'>
-					<icon icon-name='trash'></icon>
-				</button>
-				{{model.content}}
+				<span class='col-md-3' ng-show={{trashButton}}>
+					<button  class='btn btn-danger'ng-click='moveToTrashFn(model)'>
+						<icon icon-name='trash'></icon> 
+					</button>
+				</span>
+				<span class='col-md-8'>
+					{{model.content}}
+				</span>
 			</div>
 	<\div>
-	`
+	`;
+
 	return {
 		restrict: 'E',
-		scope: { list : '=', moveToTrashFn : '=' },
+		scope: { list : '=', moveToTrashFn : '=', trashButton : '=' },
 		template: tpl
 	    	}
 	}

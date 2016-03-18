@@ -14,22 +14,29 @@
   <div class=container id="page-wrapper">
     <ul id="messages"></ul>
 	<div ng-controller='messageList' ng-init='initialize()'>
-		<button class='btn btn-large btn-danger' ng-click='moveToTrash()'>
-			<icon icon-name='trash'></icon> Move all to trash</button>
-		<button class='btn btn-large btn-primary' ng-click='addMessage()'>Add message</button>
 
-		<h2 class=page-header>
-			Trash ({{trash.length}} items)
+<h2 class=row>
+		<span class='col-md-7'>
+			Trash <span ng-show='{{trash.length>0}}'>[{{trash.length}}]</span>
 
 			<button class='btn btn-large btn-primary' ng-click='restoreTrash()'><icon icon-name='repeat'></icon> Restore</button>
 			<button class='btn btn-large btn-danger' ng-click='emptyTrash()'>Empty trash</button>
 			<button class='btn btn-large btn-primary' ng-click='toggleTrashVisibility()'>
  			<icon icon-name='{{trashVisible?"minus":"plus"}}'></icon>
  			</button>
-		</h2>
+		</span>
+		<span class='col-md-4'>
+			<button class='btn btn-large btn-danger' ng-click='moveToTrash()'>
+				<icon icon-name='trash'></icon> Move all to trash</button>
+			<button class='btn btn-large btn-primary' ng-click='addMessage()'>Add message</button>
+		</span>
+</h2>
 
 			<message-list ng-show='trashVisible' trash-button=0 list='trash'></message-list>
-		<h2 class=page-header>Messages</h2>
+		<span class='row'>
+			<h2 class='col-md-7'>Messages [{{messages.length}}]</h2>
+		</span>
+
 			<message-list list='messages' trash-button=1  move-to-trash-fn='moveToTrash'></message-list>
 
 	</div>
