@@ -27,7 +27,7 @@
 		</h3>
 			<message-list ng-show='trashVisible' list='trash'></message-list>
 		<h3>Dumps</h3>
-			<message-list list='messages'></message-list>
+			<message-list list='messages' move-to-trash-fn='moveToTrash'></message-list>
 
 	</div>
 
@@ -51,9 +51,18 @@ angular.module('app', [])
 	    var message = { id: $scope.id, content: "Message #" + $scope.id++ };
 		$scope.messages.push(message);
 	}
-	$scope.moveToTrash = function() {
-		$scope.trash = $scope.trash.concat($scope.messages);
-		$scope.messages = [];
+	$scope.moveToTrash = function(message) {
+		if(message == undefined) {
+			// move all to trash
+			$.merge($scope.trash,$scope.messages);
+			$scope.messages = [];
+		}
+		else {
+			// only move that message to trash
+			$.merge($scope.trash,message);
+			var index = $scope.messages.indexOf(message);
+			$scope.messages.splice(index,1)
+		}
 	}
 	$scope.toggleTrashVisibility = function() {
 		$scope.trashVisible = !$scope.trashVisible;
@@ -78,14 +87,23 @@ angular.module('app', [])
 } ] )
 // message-list template directive
 .directive('messageList', function() {
+	var tpl = `
+	<div ng-repeat='model in list'>
+			<div id='mess{{model.id}}'>
+				<button ng-click='moveToTrashFn(model)'>To Trash</button>
+				{{model.content}}
+			</div>
+	<\div>
+	`
 	return {
 		restrict: 'E',
-		scope: { list : '=' },
-		template: "<div ng-repeat='model in list'>"
-		+"	<div id='mess{{model.id}}'>{{model.content}}</div>"
-		+"<\div>"
+		scope: { list : '=', moveToTrashFn : '=' },
+		template: tpl
+		// link: function(scope, element, attrs) {
+	 //        $compile(element.contents())(scope.$new());
+	    	}
 	}
-} );
+);
 
 
 </script>
