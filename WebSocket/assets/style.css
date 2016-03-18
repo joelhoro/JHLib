@@ -6,6 +6,11 @@ body {
 	display: none;
 }
 
+button {
+	padding : 5px;
+	border-radius: 10px;
+	background-color: #E3F1E5;
+}
 #status {
 	font-weight: normal;
 	padding: 5px 10px;
