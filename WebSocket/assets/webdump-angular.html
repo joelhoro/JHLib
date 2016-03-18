@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 
-<!-- <link rel=stylesheet type='text/css' href='style.css'></link> -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
+<script src='js/jquery-2.2.1.min.js'></script>
+<script src='js/angular.min.js'></script>
+<script src='webdump.js'></script>
 
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <title>WebSockets Demo</title>
 </head>
-<body ng-app='app'>
+<body ng-app='webSocketApp'>
   <div class=container id="page-wrapper">
     <ul id="messages"></ul>
-	<div ng-controller='demo' ng-init='initialize()'>
+	<div ng-controller='messageList' ng-init='initialize()'>
 		<button class='btn btn-large btn-danger' ng-click='moveToTrash()'>
 			<icon icon-name='trash'></icon> Move all to trash</button>
 		<button class='btn btn-large btn-primary' ng-click='addMessage()'>Add message</button>
@@ -26,92 +28,13 @@
  			</button>
 		</h2>
 
-			<message-list ng-show='trashVisible' list='trash'></message-list>
+			<message-list ng-show='trashVisible' trash-button=0 list='trash'></message-list>
 		<h2 class=page-header>Messages</h2>
-			<message-list list='messages' move-to-trash-fn='moveToTrash'></message-list>
+			<message-list list='messages' trash-button=1  move-to-trash-fn='moveToTrash'></message-list>
 
 	</div>
 
 </body>
 </html>
 
-<script src='js/jquery-2.2.1.min.js'></script>
-<script src='js/angular.min.js'></script>
 
-
-<script type="text/javascript">
-
-angular.module('app', [])
-.controller('demo',[ '$scope', function($scope) {
-	$scope.messages = [];
-	$scope.trash = [];
-	$scope.id = 1;
-	$scope.trashVisible = false;
-
-	$scope.addMessage = function() {
-	    var message = { id: $scope.id, content: "Message #" + $scope.id++ };
-		$scope.messages.push(message);
-	}
-	$scope.moveToTrash = function(message) {
-		if(message == undefined) {
-			// move all to trash
-			$.merge($scope.trash,$scope.messages);
-			$scope.messages = [];
-		}
-		else {
-			// only move that message to trash
-			$.merge($scope.trash,message);
-			var index = $scope.messages.indexOf(message);
-			$scope.messages.splice(index,1)
-		}
-	}
-	$scope.toggleTrashVisibility = function() {
-		$scope.trashVisible = !$scope.trashVisible;
-	}
-	$scope.emptyTrash = function() {
-		$scope.trash = [];
-	}
-	$scope.restoreTrash = function() {
-		$scope.messages = $scope.trash.concat($scope.messages);
-		$scope.emptyTrash();
-	}
-
-	$scope.initialize = function() {
-		$scope.addMessage();
-		$scope.addMessage();
-		$scope.addMessage();
-		$scope.addMessage();
-		$scope.moveToTrash();
-		$scope.addMessage();	
-	}
-	
-} ] )
-// message-list template directive
-.directive('messageList', function() {
-	var tpl = `
-	<div class=panel ng-repeat='model in list'>
-			<div class='panel-body' id='mess{{model.id}}'>
-				<button class='btn btn-danger'ng-click='moveToTrashFn(model)'>
-					<icon icon-name='trash'></icon>
-				</button>
-				{{model.content}}
-			</div>
-	<\div>
-	`
-	return {
-		restrict: 'E',
-		scope: { list : '=', moveToTrashFn : '=' },
-		template: tpl
-	    	}
-	}
-)
-.directive('icon', function() {
-	return {
-		restrict: 'E',
-		scope : { iconName : '@'},
-		template: `<span class='glyphicon glyphicon-{{iconName}}'></span>`
-	}
-});
-
-
-</script>
