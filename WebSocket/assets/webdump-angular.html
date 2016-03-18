@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<link rel=stylesheet type='text/css' href='style.css'></link>
+<!-- <link rel=stylesheet type='text/css' href='style.css'></link> -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
 
 <html lang="en">
 <head>
@@ -8,25 +9,25 @@
   <title>WebSockets Demo</title>
 </head>
 <body ng-app='app'>
-  <div id="page-wrapper">
-    <h1>WebDump</h1>
-
+  <div class=container id="page-wrapper">
     <ul id="messages"></ul>
 	<div ng-controller='demo' ng-init='initialize()'>
-		<button ng-click='moveToTrash()'>Move to trash</button>
-		<button ng-click='addMessage()'>Add message</button>
+		<button class='btn btn-large btn-danger' ng-click='moveToTrash()'>
+			<icon icon-name='trash'></icon> Move all to trash</button>
+		<button class='btn btn-large btn-primary' ng-click='addMessage()'>Add message</button>
 
-	    <h2>Messages</h2>
-		<h3>
-			<button ng-click='toggleTrashVisibility()'>
-				{{trashVisible ? '-' : '+'}}
-			</button>
+		<h2 class=page-header>
 			Trash ({{trash.length}} items)
-			<button ng-click='restoreTrash()'>Restore</button>
-			<button ng-click='emptyTrash()'>Empty trash</button>
-		</h3>
+
+			<button class='btn btn-large btn-primary' ng-click='restoreTrash()'><icon icon-name='repeat'></icon> Restore</button>
+			<button class='btn btn-large btn-danger' ng-click='emptyTrash()'>Empty trash</button>
+			<button class='btn btn-large btn-primary' ng-click='toggleTrashVisibility()'>
+ 			<icon icon-name='{{trashVisible?"minus":"plus"}}'></icon>
+ 			</button>
+		</h2>
+
 			<message-list ng-show='trashVisible' list='trash'></message-list>
-		<h3>Dumps</h3>
+		<h2 class=page-header>Messages</h2>
 			<message-list list='messages' move-to-trash-fn='moveToTrash'></message-list>
 
 	</div>
@@ -88,9 +89,11 @@ angular.module('app', [])
 // message-list template directive
 .directive('messageList', function() {
 	var tpl = `
-	<div ng-repeat='model in list'>
-			<div id='mess{{model.id}}'>
-				<button ng-click='moveToTrashFn(model)'>To Trash</button>
+	<div class=panel ng-repeat='model in list'>
+			<div class='panel-body' id='mess{{model.id}}'>
+				<button class='btn btn-danger'ng-click='moveToTrashFn(model)'>
+					<icon icon-name='trash'></icon>
+				</button>
 				{{model.content}}
 			</div>
 	<\div>
@@ -99,11 +102,16 @@ angular.module('app', [])
 		restrict: 'E',
 		scope: { list : '=', moveToTrashFn : '=' },
 		template: tpl
-		// link: function(scope, element, attrs) {
-	 //        $compile(element.contents())(scope.$new());
 	    	}
 	}
-);
+)
+.directive('icon', function() {
+	return {
+		restrict: 'E',
+		scope : { iconName : '@'},
+		template: `<span class='glyphicon glyphicon-{{iconName}}'></span>`
+	}
+});
 
 
 </script>
