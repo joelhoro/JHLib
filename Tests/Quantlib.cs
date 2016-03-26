@@ -17,10 +17,10 @@ namespace Tests
         [TestMethod]
         public void CumulativeDistributionTests()
         {
-            var cnd = BlackScholes.CND2(0);
+            var cnd = BlackScholes.CumulativeNormalDistribution(0);
             Assert.AreEqual(0.5, cnd);
 
-            cnd = BlackScholes.CND2(1);
+            cnd = BlackScholes.CumulativeNormalDistribution(1);
             var expected = 0.84134474606854293;
             Assert.AreEqual(expected, cnd, TOLERANCE);
         }

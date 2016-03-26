@@ -12,8 +12,8 @@ namespace JHLib.XLFunctions
         public static Dictionary<string, object> Store = new Dictionary<string, object>();
         private static int counter = 0;
 
-        const string HANDLE_MASK = "H[{0}#{1}]";
-        const string HANDLE_REGEX = @"H\[{0}#{1}\]";
+        const string HANDLE_MASK = "@[{0}#{1}]";
+        const string HANDLE_REGEX = @"@\[{0}#{1}\]";
 
         public static void Rename(string from, string to)
         {

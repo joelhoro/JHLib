@@ -57,7 +57,7 @@ namespace JHLib.QuantLIB
             return solve;
         }
 
-        public static double CND2(double X)
+        public static double CumulativeNormalDistribution(double X)
         {
             return new Normal().CumulativeDistribution(X);
         }

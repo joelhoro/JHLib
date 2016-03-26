@@ -12,11 +12,24 @@ namespace ConsoleApplication
     using JHLib.QuantLIB.Model;
     using JHLib.QuantLIB.Pricers;
     using MathNet.Numerics.Distributions;
+    using Mono.CSharp;
     using System.Diagnostics;
     using System.IO;
     using System.Reflection;
     using System.Threading;
     using System.Web.Script.Serialization;
+
+    public class CSharpScriptEngine
+    {
+        //private static ScriptState<object> scriptState = null;
+        //public static object Execute(string code)
+        //{
+        //    scriptState = scriptState == null ? CSharpScript.RunAsync(code).Result : scriptState.ContinueWithAsync(code).Result;
+        //    if (scriptState.ReturnValue != null && !string.IsNullOrEmpty(scriptState.ReturnValue.ToString()))
+        //        return scriptState.ReturnValue;
+        //    return null;
+        //}
+    }
 
 
     public class Program
@@ -158,21 +171,33 @@ namespace ConsoleApplication
 
         }
 
+        public class CSharpScriptEngine
+        {
+            public static void Test()
+            {
+                var evaluator = new Evaluator(new CompilerContext(new CompilerSettings(), new ConsoleReportPrinter()));
+                var x = evaluator.Evaluate("1+1");
+
+            }
+            //private static ScriptState<object> scriptState = null;
+            //public static object Execute(string code)
+            //{
+            //    scriptState = scriptState == null ? CSharpScript.RunAsync(code).Result : scriptState.ContinueWithAsync(code).Result;
+            //    if (scriptState.ReturnValue != null && !string.IsNullOrEmpty(scriptState.ReturnValue.ToString()))
+            //        return scriptState.ReturnValue;
+            //    return null;
+            //}
+        }
+
         public static void Main()
         {
             Console.WriteLine(DateTime.Now);
             Console.WriteLine("============================");
 
-            CreateTasks();
+            CSharpScriptEngine.Test();
+            //CreateTasks();
             return;
 
-            var job = new Job {
-                Assembly = Assembly.GetExecutingAssembly().Location,
-                Function = "DistFn",
-                Arg = 5.0
-            };
-            string filename = @"c:\temp\test.txt";
-            DumpToFile(job,filename);
             //ExecuteDump();
 //            EquityModel();
             return;

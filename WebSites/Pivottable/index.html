@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+<body>
+    <span id="result">Loading data...</span>
+<script>
+    $(document).ready(function () {
+        var data = { 'parameters': { Name: "A", ValueX: "B", list: { "A": "blob" } } };
+
+        $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "DBAccessor.asmx/Query",
+        data: JSON.stringify(data),
+        dataType: "json",
+        success: function (result) { $("#result").html(JSON.stringify(result.d)) }
+
+        }); 
+    })
+</script>
+</body>
+</html>
