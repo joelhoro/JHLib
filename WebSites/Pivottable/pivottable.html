@@ -30,7 +30,10 @@
 <title>PivotTable test</title>
 
 <div ng-app="pivottable" ng-controller="pivottableCtrl">
-<span>Started at: {{ startTime }} | useAjax={{useAjax}}</span>
+<span>Started at: {{ startTime }} | useAjax={{useAjax}} | 
+    <a href="?">Simple version</a> |
+    <a href="?useAjax">Ajax version</a>
+    </span>
   <table class='hidden' id="pivottable">
         <caption>
           <a href="#" onclick="jQuery('#pivottable').treetable('expandAll'); return false;">Expand all</a>
@@ -59,7 +62,7 @@ app.controller("pivottableCtrl", function($scope,$,$http,data1,data2,PivotTable,
       //var valueFields = [ "Qtr 1", "Qtr 2", "Qtr 3", "Qtr 4" ];
       //var pivots = [ "Product", "Customer" ];
 
-      var pivots = [ /* "Order Priority", "Ship Mode",  */ "Product Category", "Product Sub-Category", "Product Name","Region", "Province"  ];
+      var pivots = [ /* "Order Priority", "Ship Mode",  */ "Product_Category", "Product_Sub_Category", "Product_Name","Region", "Province"  ];
       var valueFields = ["Sales", "Profit" ];
 
       $scope.valueFields = valueFields;

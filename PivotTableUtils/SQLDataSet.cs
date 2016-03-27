@@ -6,11 +6,11 @@ namespace PivotTableUtils
 {
     public class SQLDataSet : IDataSet
     {
-        readonly SQLiteDatabase _database;
+        readonly ISQLDatabase _database;
         readonly string _sql;
         readonly string _name;
 
-        public SQLDataSet(SQLiteDatabase database, string sql, string name = "")
+        public SQLDataSet(ISQLDatabase database, string sql, string name = "")
         {
             _database = database;
             _sql = sql;

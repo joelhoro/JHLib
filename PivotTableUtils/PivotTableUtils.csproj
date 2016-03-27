@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utils\CSVDatabase.cs" />
     <Compile Include="Utils\SQLiteDatabase.cs" />
     <Compile Include="Utils\DBUtils.cs" />
     <Compile Include="SampleDataStore.cs" />

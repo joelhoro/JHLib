@@ -199,7 +199,8 @@ namespace ConsoleApplication
             //CSharpScriptEngine.Test();
 
             //var sample = PivotTableUtils.SampleDataStore.GetSample(1);
-            var t = new SQLDataSet(SQLiteDatabase.SampleSales, "SELECT * FROM SALES");
+            //var t = new SQLDataSet(SQLiteDatabase.SampleSales, "SELECT * FROM SALES");
+            var t = new SQLDataSet(CSVDatabase.SampleSales, "SELECT * FROM PRODUCTS.CSV");
             var queryParams = new QueryParams()
             {
                 filter = new Dictionary<string, string>(), // ["Province"] = "USA", ["City"] = "New-York" },

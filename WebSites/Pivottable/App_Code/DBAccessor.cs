@@ -1,4 +1,5 @@
 ﻿using PivotTableUtils;
+using PivotTableUtils.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,7 +21,9 @@ public class DBAccessor : System.Web.Services.WebService {
     public IDataSet _data;
     public void Initialize()
     {
-        _data = PivotTableUtils.SampleDataStore.GetSample(2);
+        //_data = PivotTableUtils.SampleDataStore.GetSample(2);
+        _data = new SQLDataSet(CSVDatabase.SampleSales, "SELECT * FROM PRODUCTS.CSV");
+
         //_data = new SQLDataSet(SQLiteDatabase.SampleSales, "SELECT * FROM SALES");
     }
 

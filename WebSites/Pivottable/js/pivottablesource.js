@@ -26,7 +26,7 @@ angular
                   var returnValue = _.map(keys, function(key) {
                         var values = valueFields
                               .toObject(field => groupedData[key].sum(utils.FieldExtractor(field)));
-                        return { key: key, values: values };
+                        return { Key: key, Values: values };
                   });
                   
                   successFn(returnValue);
