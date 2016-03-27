@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Tests</RootNamespace>
     <AssemblyName>Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -16,6 +16,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,7 +54,9 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -61,6 +64,7 @@
     <Compile Include="CompressionTests.cs" />
     <Compile Include="Date.cs" />
     <Compile Include="MCPricerTests.cs" />
+    <Compile Include="PivotTableUtilsTests.cs" />
     <Compile Include="Quantlib.cs" />
     <Compile Include="BlackScholesTests.cs" />
     <Compile Include="EquityModelTests.cs" />
@@ -68,6 +72,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PivotTableUtils\PivotTableUtils.csproj">
+      <Project>{f356dfba-7bb5-4fc9-8d26-5a6d7c5a6134}</Project>
+      <Name>PivotTableUtils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QuantLIB\QuantLIB.csproj">
       <Project>{99bd127d-bcf8-4919-872d-c290f4c2cb2f}</Project>
       <Name>QuantLIB</Name>

@@ -17,19 +17,26 @@ using System.Web.Services;
 [System.Web.Script.Services.ScriptService]
 public class DBAccessor : System.Web.Services.WebService {
 
-    public TableDataSet _data;
+    public IDataSet _data;
     public void Initialize()
     {
         _data = PivotTableUtils.SampleDataStore.GetSample(2);
+        //_data = new SQLDataSet(SQLiteDatabase.SampleSales, "SELECT * FROM SALES");
     }
 
     public DBAccessor () {
         Initialize();
     }
 
+    public struct Q
+    {
+        public string Name;
+
+    }
     [WebMethod]
     public List<QueryResults> Query(QueryParams queryParams, QuerySettings settings)
     {
+        settings = settings ?? new QuerySettings();
         return _data.Query(queryParams, settings);
     }
     

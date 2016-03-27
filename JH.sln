@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "URLParserRunner", "URLParserRunner\URLParserRunner.csproj", "{416B0F9B-2260-432B-B561-59B803358361}"
 EndProject
@@ -26,7 +26,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Pivottable(1)", "http://localhost:17041", "{CCD764A6-5AE9-475F-9697-76FEF11F1507}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6"
 		ProjectReferences = "{f356dfba-7bb5-4fc9-8d26-5a6d7c5a6134}|PivotTableUtils.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_17041"
 		Debug.AspNetCompiler.PhysicalPath = "WebSites\Pivottable\"

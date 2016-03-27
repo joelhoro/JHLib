@@ -5,19 +5,30 @@
 </head>
 <script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
 <body>
-    <span id="result">Loading data...</span>
+    <!--<span id="result">Loading data...</span>-->
+    <table id="resultTable"></table>
+
 <script>
     $(document).ready(function () {
-        var data = { 'parameters': { Name: "A", ValueX: "B", list: { "A": "blob" } } };
+
+        var data = {
+            'queryParams':
+                { filter: {}, valueFields: ["Sales", "Profit"], nextPivot: "Province" },
+            'settings': {}
+        };
 
         $.ajax({
-        type: "POST",
-        contentType: "application/json; charset=utf-8",
-        url: "DBAccessor.asmx/Query",
-        data: JSON.stringify(data),
-        dataType: "json",
-        success: function (result) { $("#result").html(JSON.stringify(result.d)) }
-
+            type            : "POST",
+            contentType     : "application/json; charset=utf-8",
+            url             : "services/DBAccessor.asmx/Query",
+            data            : JSON.stringify(data),
+            success         : function (result) {
+                console.debug("Results: ", JSON.stringify(result.d));
+                var table = result.d
+                    .map(r => "<tr><td>" + r.Key + "</td><td>" + JSON.stringify(r.Values) + "</td></tr>")
+                    .join("\n");
+                $("#resultTable").html(table);
+            }
         }); 
     })
 </script>

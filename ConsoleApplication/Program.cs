@@ -198,15 +198,15 @@ namespace ConsoleApplication
             //CSharpScriptEngine.Test();
 
             //var sample = PivotTableUtils.SampleDataStore.GetSample(1);
-            var t = new SQLDataSet("SELECT * FROM SOMETABLE");
+            var t = new SQLDataSet(SQLiteDatabase.SampleSales, "SELECT * FROM SALES");
             var queryParams = new QueryParams()
             {
-                filter = new Dictionary<string, string>() { ["Country"] = "USA", ["City"] = "New-York" },
-                valueFields = new List<string>() { "Sales", "Profits" },
-                nextPivot = "Street"
+                filter = new Dictionary<string, string>(), // ["Province"] = "USA", ["City"] = "New-York" },
+                valueFields = new List<string>() { "Sales", "Profit" },
+                nextPivot = "Province"
             };
 
-            var s = t.QueryString(queryParams);
+            var s = t.Query(queryParams,new QuerySettings());
 
             //CreateTasks();
             return;

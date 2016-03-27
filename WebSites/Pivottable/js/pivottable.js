@@ -61,7 +61,7 @@ class PivotTable {
 
             }
             
-            addNode(baseNode,obj,currentField,pivotLevel) { 
+            addNode(baseNode, obj, currentField, pivotLevel) {
                   var parentid;
                   if(baseNode == null)
                         parentid = 0;
@@ -71,15 +71,15 @@ class PivotTable {
                   var id = this.id;
                   this.nodesDictionary[id] = {level: pivotLevel, open: false};
                   this.nodesDictionary[id].filter = _.clone(this.nodesDictionary[parentid].filter)
-                  this.nodesDictionary[id].filter[currentField]=obj.key;
+                  this.nodesDictionary[id].filter[currentField]=obj.Key;
 
                   var values = this
                         .valueFields
-                        .map(utils.ObjectFn(obj.values))
+                        .map(utils.ObjectFn(obj.Values))
                         .map(x => x.toFixed(2))
                         .map(utils.HTMLWrapper("td","class='node-level-"+Math.min(pivotLevel,3)+"'"))
                         .join("\n");
-                  this.addSingleNode({ parentid: parentid, newid : id, key: obj.key, 
+                  this.addSingleNode({ parentid: parentid, newid : id, key: obj.Key, 
                         pivotLevel: pivotLevel, values: values }, baseNode );
             }
 
