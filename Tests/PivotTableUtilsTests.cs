@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PivotTableUtils;
+using PivotTableUtils.Utils;
 
 namespace Tests
 {
@@ -59,10 +60,8 @@ namespace Tests
         //
         #endregion
 
-        [TestMethod]
-        public void TestPivotTableQuery()
+        private void TestPivotTableQuery(IDataSet dataset, int expected)
         {
-            var dataset = new SQLDataSet(SQLiteDatabase.SampleSales, "SELECT * FROM SALES", "Sales sample");
             var settings = new QuerySettings();
             var queryParams = new QueryParams()
             {
@@ -72,6 +71,22 @@ namespace Tests
             };
 
             var queryResults = dataset.Query(queryParams, settings);
+            Assert.AreEqual(queryResults.Count, expected);
         }
+
+        [TestMethod]
+        public void TestPivotTableQuerySQL()
+        {
+            var dataset = new SQLDataSet(SQLiteDatabase.SampleSales, "SELECT * FROM SALES", "Sales sample");
+            TestPivotTableQuery(dataset, 14);
+        }
+
+        [TestMethod]
+        public void TestPivotTableQueryTable()
+        {
+            var dataset = SampleDataStore.GetSample(2);
+            TestPivotTableQuery(dataset, 13);
+        }
+
     }
 }

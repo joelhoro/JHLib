@@ -14,6 +14,7 @@ namespace ConsoleApplication
     using MathNet.Numerics.Distributions;
     using Mono.CSharp;
     using PivotTableUtils;
+    using PivotTableUtils.Utils;
     using System.Diagnostics;
     using System.IO;
     using System.Reflection;

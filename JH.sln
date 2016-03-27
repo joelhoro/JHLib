@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocket", "WebSocket\WebS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XLFunctions", "XLFunctions\XLFunctions.csproj", "{D5E6FFCE-44F9-42BD-8375-713EEFCEE925}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Pivottable(1)", "http://localhost:17041", "{CCD764A6-5AE9-475F-9697-76FEF11F1507}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Pivottable", "http://localhost:17041", "{CCD764A6-5AE9-475F-9697-76FEF11F1507}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6"
