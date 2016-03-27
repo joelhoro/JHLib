@@ -13,6 +13,7 @@ namespace ConsoleApplication
     using JHLib.QuantLIB.Pricers;
     using MathNet.Numerics.Distributions;
     using Mono.CSharp;
+    using PivotTableUtils;
     using System.Diagnostics;
     using System.IO;
     using System.Reflection;
@@ -194,7 +195,19 @@ namespace ConsoleApplication
             Console.WriteLine(DateTime.Now);
             Console.WriteLine("============================");
 
-            CSharpScriptEngine.Test();
+            //CSharpScriptEngine.Test();
+
+            //var sample = PivotTableUtils.SampleDataStore.GetSample(1);
+            var t = new SQLDataSet("SELECT * FROM SOMETABLE");
+            var queryParams = new QueryParams()
+            {
+                filter = new Dictionary<string, string>() { ["Country"] = "USA", ["City"] = "New-York" },
+                valueFields = new List<string>() { "Sales", "Profits" },
+                nextPivot = "Street"
+            };
+
+            var s = t.QueryString(queryParams);
+
             //CreateTasks();
             return;
 

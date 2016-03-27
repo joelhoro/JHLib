@@ -1,0 +1,89 @@
+<link href="css/jquery.treetable.theme.default.css" rel="stylesheet" type="text/css" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+
+<script src="lib/jquery.js"></script>
+<script src="lib/underscore.js"></script>
+<script src="lib/jquery.treetable.js"></script>
+<script src="lib/angular.js"></script>
+<script src="lib/jquery.blockUI.js"></script>
+<script src="data/data1.js"></script>
+<script src="data/data2.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/pivottablesource.js"></script>
+<script src="js/pivottable.js"></script>
+
+<style>
+      .hidden {
+            visibility: hidden;
+      }
+      .node-level-1 {
+            font-size: 1em;
+      }
+      .node-level-2 {
+            font-size: 0.8em;
+      }
+      .node-level-3 {
+            font-size: 0.7em;
+      }
+</style>
+
+<title>PivotTable test</title>
+
+<div ng-app="pivottable" ng-controller="pivottableCtrl">
+<span>Started at: {{ startTime }} | useAjax={{useAjax}}</span>
+  <table class='hidden' id="pivottable">
+        <caption>
+          <a href="#" onclick="jQuery('#pivottable').treetable('expandAll'); return false;">Expand all</a>
+          <a href="#" onclick="jQuery('#pivottable').treetable('collapseAll'); return false;">Collapse all</a>
+        </caption>
+        <thead>
+        </thead>
+        <tbody>
+        </tbody>
+  </table>
+</div>
+
+<script>
+
+
+var app = angular.module('pivottable', 
+      ['dataService','utilsService', 'pivotTableService'] );
+app.controller("pivottableCtrl", function($scope,$,$http,data1,data2,PivotTable, PivotTableSourceFromTable, PivotTableSourceAjax) {
+      console.log("Starting pivottable at %s", new Date());
+      $scope.startTime = new Date();
+
+      // HTML placeholder
+      var table = $("#pivottable");
+      var useAjax = location.search.contains("useAjax");
+      $scope.useAjax = useAjax;
+      //var valueFields = [ "Qtr 1", "Qtr 2", "Qtr 3", "Qtr 4" ];
+      //var pivots = [ "Product", "Customer" ];
+
+      var pivots = [ /* "Order Priority", "Ship Mode",  */ "Product Category", "Product Sub-Category", "Product Name","Region", "Province"  ];
+      var valueFields = ["Sales", "Profit" ];
+
+      $scope.valueFields = valueFields;
+      $scope.pivots = pivots;
+
+      var limit = 500;
+      var baseData = data2;
+      if(!useAjax) {
+            // datasource from table
+            var data = baseData.slice(0,limit);
+
+            var source = new PivotTableSourceFromTable(data, pivots, valueFields);
+      }
+      else {
+            // datasource from Ajax
+            var url = "services/DBAccessor.asmx/Query";
+            var settings = { limit: limit };
+            var source = new PivotTableSourceAjax(url, settings, pivots, valueFields);
+      }
+
+      var classes = [ "Folder node-level-1", "File node-level-2", "File node-level-3" ];
+      new PivotTable(table,source,pivots,valueFields,classes);
+
+      $(".hidden").removeClass("hidden");
+} );
+
+</script>

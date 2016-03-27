@@ -27,6 +27,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Pivottable(1)", "http://loc
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{f356dfba-7bb5-4fc9-8d26-5a6d7c5a6134}|PivotTableUtils.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_17041"
 		Debug.AspNetCompiler.PhysicalPath = "WebSites\Pivottable\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_17041\"
@@ -44,6 +45,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Pivottable(1)", "http://loc
 		SlnRelativePath = "WebSites\Pivottable\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PivotTableUtils", "PivotTableUtils\PivotTableUtils.csproj", "{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -194,12 +197,26 @@ Global
 		{CCD764A6-5AE9-475F-9697-76FEF11F1507}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{CCD764A6-5AE9-475F-9697-76FEF11F1507}.Debug|Win32.ActiveCfg = Debug|Any CPU
 		{CCD764A6-5AE9-475F-9697-76FEF11F1507}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CCD764A6-5AE9-475F-9697-76FEF11F1507}.Debug|x64.Build.0 = Debug|Any CPU
 		{CCD764A6-5AE9-475F-9697-76FEF11F1507}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{CCD764A6-5AE9-475F-9697-76FEF11F1507}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{CCD764A6-5AE9-475F-9697-76FEF11F1507}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{CCD764A6-5AE9-475F-9697-76FEF11F1507}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
 		{CCD764A6-5AE9-475F-9697-76FEF11F1507}.Release|Win32.ActiveCfg = Debug|Any CPU
 		{CCD764A6-5AE9-475F-9697-76FEF11F1507}.Release|x64.ActiveCfg = Debug|Any CPU
+		{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}.Debug|x64.Build.0 = Debug|Any CPU
+		{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}.Release|Win32.ActiveCfg = Release|Any CPU
+		{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}.Release|x64.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
