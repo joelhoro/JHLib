@@ -191,11 +191,16 @@ namespace ConsoleApplication
             //}
         }
 
+        public static double Double(double x) => 2 * x;
+
         public static void Main()
         {
             Console.WriteLine(DateTime.Now);
             Console.WriteLine("============================");
-
+            var b = true;
+            var x = $"This is {(b ? "true":"false")}";
+            var y = Double(123);
+            return;
             //CSharpScriptEngine.Test();
 
             //var sample = PivotTableUtils.SampleDataStore.GetSample(1);

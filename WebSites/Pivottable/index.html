@@ -3,7 +3,7 @@
 <head>
     <title></title>
 </head>
-<script src="https://code.jquery.com/jquery-2.2.2.min.js"></script>
+<script src="lib/jquery.js"></script>
 <body>
     <a href="pivottable.html">Pivottable</a>|
     <a href="pivottable.html?useAjax">Pivottable AJAX</a>
@@ -14,23 +14,27 @@
     $(document).ready(function () {
 
         var data = {
-            'queryParams':
-                { filter: {}, valueFields: ["Sales", "Profit"], nextPivot: "Province" },
-            'settings': {}
+//            'queryParams':
+//                { filter: {}, valueFields: ["Sales", "Profit"], nextPivot: "Province" },
+//            'settings': {}
         };
+
+        $("#resultTable").html("Loading data...");
 
         $.ajax({
             type            : "POST",
             contentType     : "application/json; charset=utf-8",
-            url             : "services/DBAccessor.asmx/Query",
+            url             : "services/DBAccessor.asmx/RetrieveVolSurfaces",
             data            : JSON.stringify(data),
-            success         : function (result) {
-                console.debug("Results: ", JSON.stringify(result.d));
+            success: function (result) {
+                debugger;
+                console.debug("Results: ", JSON.stringify(result));
                 var table = result.d
                     .map(r => "<tr><td>" + r.Key + "</td><td>" + JSON.stringify(r.Values) + "</td></tr>")
                     .join("\n");
                 $("#resultTable").html(table);
-            }
+            },
+            error           : result => $("#resultTable").html("Error loading data")
         }); 
     })
 </script>

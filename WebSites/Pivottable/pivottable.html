@@ -62,7 +62,7 @@ app.controller("pivottableCtrl", function($scope,$,$http,data1,data2,PivotTable,
       //var valueFields = [ "Qtr 1", "Qtr 2", "Qtr 3", "Qtr 4" ];
       //var pivots = [ "Product", "Customer" ];
 
-      var pivots = [ /* "Order Priority", "Ship Mode",  */ "Product_Category", "Product_Sub_Category", "Product_Name","Region", "Province"  ];
+      var pivots = [ "Region", /* "Order Priority", "Ship Mode",  */ "Product_Category", "Product_Sub_Category", "Product_Name","Region", "Province"  ];
       var valueFields = ["Sales", "Profit" ];
 
       $scope.valueFields = valueFields;

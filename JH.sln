@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSocket", "WebSocket\WebS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XLFunctions", "XLFunctions\XLFunctions.csproj", "{D5E6FFCE-44F9-42BD-8375-713EEFCEE925}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Pivottable", "http://localhost:17041", "{CCD764A6-5AE9-475F-9697-76FEF11F1507}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Pivottable(1)", "http://localhost:17041", "{CCD764A6-5AE9-475F-9697-76FEF11F1507}"
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6"
@@ -47,6 +47,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Pivottable", "http://localh
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PivotTableUtils", "PivotTableUtils\PivotTableUtils.csproj", "{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolMarker", "VolMarker\VolMarker.csproj", "{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -217,6 +219,22 @@ Global
 		{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}.Release|Win32.ActiveCfg = Release|Any CPU
 		{F356DFBA-7BB5-4FC9-8D26-5A6D7C5A6134}.Release|x64.ActiveCfg = Release|Any CPU
+		{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}.Debug|Win32.Build.0 = Debug|Any CPU
+		{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}.Debug|x64.Build.0 = Debug|Any CPU
+		{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}.Release|Win32.ActiveCfg = Release|Any CPU
+		{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}.Release|Win32.Build.0 = Release|Any CPU
+		{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}.Release|x64.ActiveCfg = Release|Any CPU
+		{5D6D5DD6-32D9-4C56-BA3D-3AFDAF1A8D8A}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

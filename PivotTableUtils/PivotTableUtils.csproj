@@ -81,6 +81,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <EmbeddedResource Include="SampleData\dummyvolsurfaces.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="System.Data.SQLite.dll" />
